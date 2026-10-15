@@ -1,16 +1,16 @@
 # Retrieval evaluation
 
-- Generated: `2026-10-15T07:28:25+00:00`
+- Generated: `2026-10-15T08:27:55+00:00`
 - Questions scored: **30** (skipped 5 refusal questions with no gold doc)
 - Best config by MRR: **dense_only**
 - Index: 204 chunks · dim 384 · embeddings `sentence-transformers/all-MiniLM-L6-v2` (sentence_transformers) · ANN `faiss` · built in 0.715 s
 
 | Config | Recall@1 | Recall@3 | Recall@5 | MRR | Mean latency (ms) | P95 (ms) |
 | --- | --- | --- | --- | --- | --- | --- |
-| `dense_only` | 0.633 | 0.800 | 0.900 | 0.729 | 0.793 | 0.903 |
-| `bm25_only` | 0.567 | 0.867 | 0.967 | 0.727 | 0.399 | 0.522 |
-| `hybrid_rrf` | 0.533 | 0.867 | 0.933 | 0.704 | 0.334 | 0.435 |
-| `hybrid_rrf_recency` | 0.567 | 0.833 | 0.933 | 0.703 | 0.309 | 0.375 |
+| `dense_only` | 0.633 | 0.800 | 0.900 | 0.729 | 23.007 | 39.686 |
+| `bm25_only` | 0.567 | 0.867 | 0.967 | 0.727 | 0.558 | 0.73 |
+| `hybrid_rrf` | 0.533 | 0.867 | 0.933 | 0.704 | 0.694 | 1.0 |
+| `hybrid_rrf_recency` | 0.567 | 0.833 | 0.933 | 0.703 | 0.79 | 1.26 |
 
 > **Honest note:** on this corpus/host the best measured config was `dense_only`, not `hybrid_rrf_recency`. Reported as measured; not tuned to look good.
 
