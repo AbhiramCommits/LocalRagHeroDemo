@@ -697,12 +697,13 @@ def _derive_citations(answer: str, chunks: list[Chunk]) -> list[str]:
     if not chunks:
         return []
     norm_answer = _normalize(answer)
+    answer_lower = answer.lower()
     ordered: list[str] = []
     seen: set[str] = set()
 
-    # 1. documents explicitly named in the answer
+    # 1. documents explicitly named in the answer (case-insensitive)
     for c in chunks:
-        if c.doc_id in answer and c.doc_id not in seen:
+        if c.doc_id.lower() in answer_lower and c.doc_id not in seen:
             seen.add(c.doc_id)
             ordered.append(c.citation())
 
@@ -714,8 +715,14 @@ def _derive_citations(answer: str, chunks: list[Chunk]) -> list[str]:
             seen.add(c.doc_id)
             ordered.append(c.citation())
 
+    # 3. fallback: the chunk with the greatest word overlap with the answer
     if not ordered:
-        ordered.append(chunks[0].citation())
+        ans_tokens = set(_TOKEN_RE.findall(answer.lower()))
+        best = max(
+            chunks,
+            key=lambda c: len(ans_tokens & set(_TOKEN_RE.findall(c.text.lower()))),
+        )
+        ordered.append(best.citation())
     return ordered
 
 
