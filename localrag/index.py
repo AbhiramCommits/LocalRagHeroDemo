@@ -14,7 +14,7 @@ from __future__ import annotations
 import json
 import time
 from dataclasses import asdict, dataclass, field
-from datetime import datetime, timezone
+from datetime import UTC, datetime
 from pathlib import Path
 
 import numpy as np
@@ -102,7 +102,7 @@ class VectorIndex:
 
     # ------------------------------------------------------------------ #
     @classmethod
-    def load(cls, index_dir: str | Path) -> "VectorIndex":
+    def load(cls, index_dir: str | Path) -> VectorIndex:
         d = Path(index_dir)
         vectors = np.load(d / "vectors.npy") if (d / "vectors.npy").exists() else np.zeros((0, 0), np.float32)
         raw = json.loads((d / "chunks.json").read_text(encoding="utf-8"))
@@ -141,7 +141,7 @@ def build_index(
         device=embedder.device,
         build_seconds=round(elapsed, 3),
         corpus_dir=str(corpus_dir),
-        created_utc=datetime.now(timezone.utc).isoformat(timespec="seconds"),
+        created_utc=datetime.now(UTC).isoformat(timespec="seconds"),
         load_error=embedder.load_error,
     )
     (Path(out_dir) / "meta.json").write_text(

@@ -1,0 +1,122 @@
+{
+  "generated_utc": "2026-10-15T07:58:59+00:00",
+  "workload": {
+    "n_prompts": 12,
+    "repetitions": 3,
+    "warmup_discarded": 1,
+    "max_new_tokens": 128
+  },
+  "host": {
+    "os": "Darwin 27.0.0",
+    "platform": "macOS-27.0.1-arm64-arm-64bit",
+    "cpu": "arm",
+    "wsl": false,
+    "nvidia_smi": null,
+    "torch": {
+      "available": true,
+      "version": "2.14.1",
+      "cuda_available": false,
+      "cuda_version": null,
+      "device_count": 0,
+      "mps_available": true
+    }
+  },
+  "index": {
+    "chunk_count": 204,
+    "build_seconds": 0.715,
+    "embedding_model": "sentence-transformers/all-MiniLM-L6-v2",
+    "embedding_backend": "sentence_transformers",
+    "device": "cpu",
+    "ann_backend": "faiss"
+  },
+  "configs": {
+    "extractive_cpu": {
+      "status": "measured",
+      "device": "cpu",
+      "model": "extractive-rule-based",
+      "batch": 1,
+      "n_prompts": 12,
+      "n_calls": 36,
+      "errors": 0,
+      "tokens_per_s": {
+        "mean": 110411.286,
+        "stdev": 16313.4531
+      },
+      "ttft_s": {
+        "mean": 0.0,
+        "stdev": 0.0
+      },
+      "latency_ms": {
+        "mean": 0.02,
+        "p50": 0.019,
+        "p95": 0.026
+      },
+      "peak_vram_mb": null,
+      "gpu": {
+        "available": false,
+        "status": "not_measured_on_this_host",
+        "device_name": null,
+        "driver_version": null,
+        "cuda_version": null,
+        "samples": 0,
+        "peak_memory_used_mb": null,
+        "memory_total_mb": null,
+        "peak_utilization_pct": null,
+        "mean_utilization_pct": null,
+        "mean_power_w": null,
+        "peak_power_w": null,
+        "reason": "NVML unavailable: NVMLError_LibraryNotFound: NVML Shared Library Not Found"
+      }
+    },
+    "hf_cpu_fp32": {
+      "status": "measured",
+      "device": "cpu",
+      "model": "Qwen/Qwen2.5-0.5B-Instruct",
+      "batch": 1,
+      "n_prompts": 12,
+      "n_calls": 36,
+      "errors": 0,
+      "tokens_per_s": {
+        "mean": 22.081,
+        "stdev": 2.523
+      },
+      "ttft_s": {
+        "mean": 0.2093,
+        "stdev": 0.044
+      },
+      "latency_ms": {
+        "mean": 6030.021,
+        "p50": 5602.794,
+        "p95": 9286.15
+      },
+      "peak_vram_mb": null,
+      "gpu": {
+        "available": false,
+        "status": "not_measured_on_this_host",
+        "device_name": null,
+        "driver_version": null,
+        "cuda_version": null,
+        "samples": 0,
+        "peak_memory_used_mb": null,
+        "memory_total_mb": null,
+        "peak_utilization_pct": null,
+        "mean_utilization_pct": null,
+        "mean_power_w": null,
+        "peak_power_w": null,
+        "reason": "NVML unavailable: NVMLError_LibraryNotFound: NVML Shared Library Not Found"
+      }
+    },
+    "hf_cuda_fp16": {
+      "status": "not_measured_on_this_host",
+      "reason": "no CUDA device on this host"
+    },
+    "hf_cuda_fp16_batch4": {
+      "status": "not_measured_on_this_host",
+      "reason": "no CUDA device on this host"
+    },
+    "endpoint_vllm_or_nim": {
+      "status": "not_measured_on_this_host",
+      "reason": "LOCALRAG_ENDPOINT is not set (no vLLM/NIM server configured)"
+    }
+  }
+}

@@ -252,5 +252,161 @@ def host_profile_json(profile: HostProfile | None = None) -> str:
     return json.dumps((profile or host_profile()).to_dict(), indent=2)
 
 
+# --------------------------------------------------------------------------- #
+# NVML sampling monitor                                                       #
+# --------------------------------------------------------------------------- #
+@dataclass
+class GpuSummary:
+    available: bool
+    status: str  # "measured" | "not_measured_on_this_host"
+    device_name: str | None = None
+    driver_version: str | None = None
+    cuda_version: str | None = None
+    samples: int = 0
+    peak_memory_used_mb: float | None = None
+    memory_total_mb: float | None = None
+    peak_utilization_pct: float | None = None
+    mean_utilization_pct: float | None = None
+    mean_power_w: float | None = None
+    peak_power_w: float | None = None
+    reason: str | None = None
+
+    def as_dict(self) -> dict:
+        return asdict(self)
+
+
+class GpuMonitor:
+    """Sample GPU utilization, power and peak VRAM in a background thread.
+
+    Use as a context manager::
+
+        with GpuMonitor() as m:
+            ...workload...
+        print(m.summary())
+
+    When NVML / an NVIDIA GPU is unavailable the monitor degrades to a no-op and
+    ``summary()`` reports ``status="not_measured_on_this_host"`` — it never raises.
+    """
+
+    def __init__(self, index: int = 0, interval: float = 0.1) -> None:
+        self.index = index
+        self.interval = interval
+        self._thread = None
+        self._stop = None
+        self._handle = None
+        self._pynvml = None
+        self._samples: list[dict] = []
+        self._device_name: str | None = None
+        self._driver: str | None = None
+        self._cuda: str | None = None
+        self._mem_total: float | None = None
+        self._reason: str | None = None
+
+    # ------------------------------------------------------------------ #
+    def _init_nvml(self) -> bool:
+        try:
+            import pynvml
+
+            pynvml.nvmlInit()
+            self._pynvml = pynvml
+            self._handle = pynvml.nvmlDeviceGetHandleByIndex(self.index)
+            self._device_name = _decode(pynvml.nvmlDeviceGetName(self._handle))
+            self._driver = _decode(pynvml.nvmlSystemGetDriverVersion())
+            self._cuda = _cuda_from_nvml(pynvml)
+            mem = pynvml.nvmlDeviceGetMemoryInfo(self._handle)
+            self._mem_total = round(mem.total / (1024 * 1024), 1)
+            return True
+        except Exception as exc:
+            self._reason = f"NVML unavailable: {type(exc).__name__}: {exc}"
+            return False
+
+    def __enter__(self) -> GpuMonitor:
+        if not self._init_nvml():
+            return self
+        import threading
+
+        self._stop = threading.Event()
+
+        def _loop() -> None:
+            while not self._stop.is_set():
+                try:
+                    mem = self._pynvml.nvmlDeviceGetMemoryInfo(self._handle)
+                    util = self._pynvml.nvmlDeviceGetUtilizationRates(self._handle)
+                    try:
+                        power = self._pynvml.nvmlDeviceGetPowerUsage(self._handle) / 1000.0
+                    except Exception:
+                        power = None
+                    self._samples.append(
+                        {
+                            "memory_used_mb": mem.used / (1024 * 1024),
+                            "utilization_pct": float(util.gpu),
+                            "power_w": power,
+                        }
+                    )
+                except Exception:
+                    pass
+                self._stop.wait(self.interval)
+
+        self._thread = threading.Thread(target=_loop, daemon=True)
+        self._thread.start()
+        return self
+
+    def __exit__(self, *exc: object) -> None:
+        if self._stop is not None:
+            self._stop.set()
+        if self._thread is not None:
+            self._thread.join(timeout=2)
+        if self._pynvml is not None:
+            try:
+                self._pynvml.nvmlShutdown()
+            except Exception:
+                pass
+
+    # ------------------------------------------------------------------ #
+    def summary(self) -> GpuSummary:
+        if not self._samples:
+            return GpuSummary(
+                available=False,
+                status="not_measured_on_this_host",
+                device_name=self._device_name,
+                driver_version=self._driver,
+                cuda_version=self._cuda,
+                memory_total_mb=self._mem_total,
+                reason=self._reason or "no NVML samples collected on this host",
+            )
+        utils = [s["utilization_pct"] for s in self._samples]
+        powers = [s["power_w"] for s in self._samples if s["power_w"] is not None]
+        return GpuSummary(
+            available=True,
+            status="measured",
+            device_name=self._device_name,
+            driver_version=self._driver,
+            cuda_version=self._cuda,
+            samples=len(self._samples),
+            peak_memory_used_mb=round(max(s["memory_used_mb"] for s in self._samples), 1),
+            memory_total_mb=self._mem_total,
+            peak_utilization_pct=round(max(utils), 1),
+            mean_utilization_pct=round(sum(utils) / len(utils), 1),
+            mean_power_w=round(sum(powers) / len(powers), 1) if powers else None,
+            peak_power_w=round(max(powers), 1) if powers else None,
+        )
+
+
+def _decode(value: object) -> str:
+    return value.decode() if isinstance(value, bytes) else str(value)
+
+
+def _cuda_from_nvml(pynvml: object) -> str | None:
+    try:
+        raw = pynvml.nvmlSystemGetCudaDriverVersion_v2()  # type: ignore[attr-defined]
+        return f"{raw // 1000}.{(raw % 1000) // 10}"
+    except Exception:
+        try:
+            raw = pynvml.nvmlSystemGetCudaDriverVersion()  # type: ignore[attr-defined]
+            return f"{raw // 1000}.{(raw % 1000) // 10}"
+        except Exception:
+            return None
+
+
 if __name__ == "__main__":  # pragma: no cover
     print(format_host_profile())

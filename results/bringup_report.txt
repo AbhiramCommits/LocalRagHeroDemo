@@ -1,0 +1,19 @@
+LocalRAG Hero Demo — GPU bring-up preflight
+===========================================
+host: Darwin 27.0.0 arm64   date: 2026-10-15T07:46:03Z
+
+[PASS] python3 present: Python 3.14.2
+[PASS] free disk 61 GB (>= 10 GB)
+[SKIP] nvidia-smi not found — no NVIDIA GPU on this host (CPU path only)
+       remediation: install the NVIDIA driver: Linux 'sudo apt-get install -y nvidia-driver-535', Windows 'winget install Nvidia.GeForceExperience'
+[PASS] docker present: Docker version 28.5.1, build e180ab8
+[SKIP] nvidia-container-toolkit not detected
+       remediation: sudo apt-get install -y nvidia-container-toolkit && sudo nvidia-ctk runtime configure --runtime=docker
+[SKIP] docker GPU smoke test skipped (no NVIDIA GPU)
+[PASS] not running under WSL
+[PASS] Hugging Face cache writable at /Users/abhiramkasireddi/.cache/huggingface
+
+-------------------------------------------
+summary: 5 PASS, 0 FAIL, 3 SKIP
+result: no hard failures. GPU-specific SKIPs mean those configs will be
+        recorded as 'not_measured_on_this_host' in the benchmark table.
