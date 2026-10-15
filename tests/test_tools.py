@@ -2,6 +2,8 @@
 
 from __future__ import annotations
 
+import pytest
+
 
 def test_get_spec_value_parses_unit(tools):
     obs, hits, cites = tools.get_spec_value("CNC-12", "turret clamp bolts torque")
@@ -57,5 +59,7 @@ def test_search_docs_returns_citations(tools):
 
 
 def test_langchain_tools_exposed(tools):
+    # langchain-core lives in the optional ``rag`` extra; CI installs core deps only.
+    pytest.importorskip("langchain_core")
     names = {t.name for t in tools.langchain_tools()}
     assert names == {"search_docs", "lookup_asset", "get_spec_value", "check_superseded"}
