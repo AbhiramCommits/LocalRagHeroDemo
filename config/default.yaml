@@ -1,0 +1,35 @@
+# ---------------------------------------------------------------------------
+# LocalRAG Hero Demo — default configuration
+#
+# Every key can be overridden with an environment variable of the same name
+# uppercased and prefixed with LOCALRAG_ (e.g. LOCALRAG_BACKEND=extractive).
+# ---------------------------------------------------------------------------
+embedding_model: sentence-transformers/all-MiniLM-L6-v2
+llm_model: Qwen/Qwen2.5-0.5B-Instruct
+
+# Chunking
+chunk_size: 900
+chunk_overlap: 120
+
+# Retrieval
+top_k: 5
+rrf_k: 60
+recency_weight: 0.15
+
+# Backend: auto | transformers | openai_compat | extractive
+backend: auto
+endpoint: ""
+device: auto
+
+# Agent
+max_tool_calls: 4
+max_new_tokens: 320
+temperature: 0.0
+seed: 0
+
+# Paths (relative to the repo root)
+corpus_dir: data/corpus
+gold_path: data/gold/questions.jsonl
+index_dir: artifacts/index
+cache_dir: .cache
+results_dir: results

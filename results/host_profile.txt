@@ -1,0 +1,19 @@
+LocalRAG Hero Demo — host profile
+==================================
+OS                : Darwin 27.0.0
+Platform          : macOS-27.0.1-arm64-arm-64bit
+CPU               : arm (arm64)
+Python            : 3.11.17
+Running under WSL : False
+nvidia-smi        : NOT FOUND
+NVML available    : False
+----------------------------------
+torch available   : True
+torch version     : 2.14.1
+CUDA available    : False
+CUDA (torch)      : None
+MPS available     : True
+----------------------------------
+GPU count         : 0 (no NVIDIA GPU detected on this host)
+                    -> GPU configs will be recorded as not_measured_on_this_host
+----------------------------------

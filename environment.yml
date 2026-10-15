@@ -1,0 +1,15 @@
+# Conda environment for the LocalRAG Hero Demo.
+#   conda env create -f environment.yml
+#   conda activate localrag
+#   pip install -e .
+#
+# NOTE: torch is installed from pip (not conda) so the same environment works on
+# Linux/CUDA, Windows/WSL2 and Apple-Silicon CPU hosts.
+name: localrag
+channels:
+  - conda-forge
+dependencies:
+  - python=3.11
+  - pip>=23.0
+  - pip:
+      - -e .[all]

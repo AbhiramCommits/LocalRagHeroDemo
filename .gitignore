@@ -1,0 +1,50 @@
+# ---- Python ----
+__pycache__/
+*.py[cod]
+*$py.class
+*.egg-info/
+.eggs/
+build/
+dist/
+.installed.cfg
+
+# ---- Test / lint caches ----
+.pytest_cache/
+.ruff_cache/
+.mypy_cache/
+.coverage
+.coverage.*
+htmlcov/
+coverage.xml
+
+# ---- Virtual envs ----
+.venv/
+venv/
+env/
+ENV/
+
+# ---- Secrets ----
+.env
+.env.*
+
+# ---- Model weights & embedding caches ----
+models/
+.cache/
+*.faiss
+
+# ---- Recordings (large binaries; keep docs/, results/, data/ tracked) ----
+recordings/*.mp4
+recordings/*.webm
+recordings/*.cast
+
+# ---- OS / editor ----
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
+
+# ----- explicitly allowed (these are tracked deliverables) -----
+!data/
+!data/**
+!results/
+!results/**

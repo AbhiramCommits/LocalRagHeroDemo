@@ -1,0 +1,354 @@
+"""Hand-written gold evaluation set for the Northline Precision Cell 4 demo.
+
+35 questions across five categories. The JSONL is written to
+``data/gold/questions.jsonl`` by ``localrag corpus build``.
+
+Categories
+----------
+* ``lookup``    — a single fact living in one (or a few) documents.
+* ``numeric``   — a torque / pressure / temperature / interval value.
+* ``supersede`` — the manual value has been superseded; the newest doc wins.
+* ``multi_hop`` — requires combining two or more documents.
+* ``refusal``   — the answer is genuinely *not* in the corpus; correct behaviour
+  is to say so and cite nothing.
+
+Answer-substring matching is dash/space/dot normalised (see
+:func:`localrag.evaluate._normalize`), so ``6-8 %`` matches ``6–8 %``.
+"""
+
+from __future__ import annotations
+
+import json
+from pathlib import Path
+
+# --------------------------------------------------------------------------- #
+# The questions                                                               #
+# --------------------------------------------------------------------------- #
+QUESTIONS: list[dict] = [
+    # ---------------- lookup (10) ----------------
+    {
+        "id": "Q01",
+        "category": "lookup",
+        "question": "What does fault code E-214 mean on the Cell 4 machines?",
+        "expected_doc_ids": ["MANUAL-CNC-07", "MANUAL-CNC-12", "MANUAL-GRND-03", "MANUAL-DRLL-08"],
+        "expected_answer_substrings": ["spindle over-temperature", "78"],
+        "expected_tools": ["search_docs"],
+    },
+    {
+        "id": "Q02",
+        "category": "lookup",
+        "question": "What is the daily PM coolant check for the CNC-07?",
+        "expected_doc_ids": ["MANUAL-CNC-07"],
+        "expected_answer_substrings": ["6-8", "refractometer"],
+        "expected_tools": ["search_docs"],
+    },
+    {
+        "id": "Q03",
+        "category": "lookup",
+        "question": "What safety step must be taken before removing a way cover on the CNC-07?",
+        "expected_doc_ids": ["MANUAL-CNC-07"],
+        "expected_answer_substrings": ["lock out", "480"],
+        "expected_tools": ["search_docs"],
+    },
+    {
+        "id": "Q04",
+        "category": "lookup",
+        "question": "What is the inspection interval for the hole-position tolerance check?",
+        "expected_doc_ids": ["QC-WI-005"],
+        "expected_answer_substrings": ["every 25 parts"],
+        "expected_tools": ["search_docs"],
+    },
+    {
+        "id": "Q05",
+        "category": "lookup",
+        "question": "Which work instruction covers incoming raw-material verification?",
+        "expected_doc_ids": ["QC-WI-001"],
+        "expected_answer_substrings": ["aluminium", "6082"],
+        "expected_tools": ["search_docs"],
+    },
+    {
+        "id": "Q06",
+        "category": "lookup",
+        "question": "What does fault code E-318 indicate on the PRS-02 press?",
+        "expected_doc_ids": ["MANUAL-PRS-02"],
+        "expected_answer_substrings": ["hydraulic pressure loss", "1800"],
+        "expected_tools": ["search_docs"],
+    },
+    {
+        "id": "Q07",
+        "category": "lookup",
+        "question": "What is the maximum spindle speed of the CNC-07?",
+        "expected_doc_ids": ["SPEC-CNC-07"],
+        "expected_answer_substrings": ["15 000 rpm"],
+        "expected_tools": ["search_docs"],
+    },
+    {
+        "id": "Q08",
+        "category": "lookup",
+        "question": "What coolant concentration and pH window does QC-WI-009 require?",
+        "expected_doc_ids": ["QC-WI-009"],
+        "expected_answer_substrings": ["6-8", "8.5"],
+        "expected_tools": ["search_docs"],
+    },
+    {
+        "id": "Q09",
+        "category": "lookup",
+        "question": "What is the payload of the ROB-03 material-handling robot?",
+        "expected_doc_ids": ["SPEC-ROB-03"],
+        "expected_answer_substrings": ["20 kg"],
+        "expected_tools": ["search_docs"],
+    },
+    {
+        "id": "Q10",
+        "category": "lookup",
+        "question": "Which fault codes are listed in the WELD-06 maintenance manual?",
+        "expected_doc_ids": ["MANUAL-WELD-06"],
+        "expected_answer_substrings": ["e-815"],
+        "expected_tools": ["search_docs"],
+    },
+    # ---------------- numeric (8) ----------------
+    {
+        "id": "Q11",
+        "category": "numeric",
+        "question": "What torque must be applied to the CNC-12 turret clamp bolts?",
+        "expected_doc_ids": ["MANUAL-CNC-12"],
+        "expected_answer_substrings": ["38 n.m"],
+        "expected_tools": ["search_docs"],
+    },
+    {
+        "id": "Q12",
+        "category": "numeric",
+        "question": "What is the drawbar force specification for the CNC-07?",
+        "expected_doc_ids": ["MANUAL-CNC-07"],
+        "expected_answer_substrings": ["12 kn"],
+        "expected_tools": ["search_docs"],
+    },
+    {
+        "id": "Q13",
+        "category": "numeric",
+        "question": "What hydraulic accumulator pre-charge is required for the PRS-02?",
+        "expected_doc_ids": ["MANUAL-PRS-02"],
+        "expected_answer_substrings": ["1450 psi"],
+        "expected_tools": ["search_docs"],
+    },
+    {
+        "id": "Q14",
+        "category": "numeric",
+        "question": "What torque is specified for the WELD-06 torch collar?",
+        "expected_doc_ids": ["MANUAL-WELD-06"],
+        "expected_answer_substrings": ["6 n.m"],
+        "expected_tools": ["search_docs"],
+    },
+    {
+        "id": "Q15",
+        "category": "numeric",
+        "question": "What is the lens cassette screw torque on the LASER-02?",
+        "expected_doc_ids": ["MANUAL-LASER-02"],
+        "expected_answer_substrings": ["3 n.m"],
+        "expected_tools": ["search_docs"],
+    },
+    {
+        "id": "Q16",
+        "category": "numeric",
+        "question": "What is the collet nut torque on the DRLL-08 drill/tap station?",
+        "expected_doc_ids": ["MANUAL-DRLL-08"],
+        "expected_answer_substrings": ["55 n.m"],
+        "expected_tools": ["search_docs"],
+    },
+    {
+        "id": "Q17",
+        "category": "numeric",
+        "question": "What is the wheel arbor nut torque on the GRND-03 grinder?",
+        "expected_doc_ids": ["MANUAL-GRND-03"],
+        "expected_answer_substrings": ["95 n.m"],
+        "expected_tools": ["search_docs"],
+    },
+    {
+        "id": "Q18",
+        "category": "numeric",
+        "question": "What air-supply pressure range is required at the CNC-07 FRL unit?",
+        "expected_doc_ids": ["MANUAL-CNC-07"],
+        "expected_answer_substrings": ["90-110 psi"],
+        "expected_tools": ["search_docs"],
+    },
+    # ---------------- supersede (5) ----------------
+    {
+        "id": "Q19",
+        "category": "supersede",
+        "question": "What is the current torque spec for the CNC-07 spindle clamp bolts?",
+        "expected_doc_ids": ["INC-2026-001"],
+        "expected_answer_substrings": ["52 n.m"],
+        "expected_tools": ["check_superseded", "search_docs"],
+    },
+    {
+        "id": "Q20",
+        "category": "supersede",
+        "question": "What is the current hydraulic relief pressure for the PRS-02?",
+        "expected_doc_ids": ["INC-2026-002"],
+        "expected_answer_substrings": ["2750 psi"],
+        "expected_tools": ["check_superseded", "search_docs"],
+    },
+    {
+        "id": "Q21",
+        "category": "supersede",
+        "question": "What is the current hole-position tolerance in QC-WI-005?",
+        "expected_doc_ids": ["INC-2026-003"],
+        "expected_answer_substrings": ["0.03 mm"],
+        "expected_tools": ["check_superseded", "search_docs"],
+    },
+    {
+        "id": "Q22",
+        "category": "supersede",
+        "question": "What is the current wire-feed drive-roll tension on the WELD-06?",
+        "expected_doc_ids": ["INC-2026-004"],
+        "expected_answer_substrings": ["11 n"],
+        "expected_tools": ["check_superseded", "search_docs"],
+    },
+    {
+        "id": "Q23",
+        "category": "supersede",
+        "question": "What is the current probe calibration interval for the CMM-04?",
+        "expected_doc_ids": ["INC-2026-008"],
+        "expected_answer_substrings": ["60 days"],
+        "expected_tools": ["check_superseded", "search_docs"],
+    },
+    # ---------------- multi_hop (7) ----------------
+    {
+        "id": "Q24",
+        "category": "multi_hop",
+        "question": (
+            "If the CNC-07 spindle front bearing exceeds its limit, which fault code "
+            "fires and above what temperature?"
+        ),
+        "expected_doc_ids": ["MANUAL-CNC-07"],
+        "expected_answer_substrings": ["e-214", "78"],
+        "expected_tools": ["search_docs"],
+    },
+    {
+        "id": "Q25",
+        "category": "multi_hop",
+        "question": "Which document supersedes the CONV-05 belt tension and what is the new value?",
+        "expected_doc_ids": ["INC-2026-006", "MANUAL-CONV-05"],
+        "expected_answer_substrings": ["58 n"],
+        "expected_tools": ["search_docs", "check_superseded"],
+    },
+    {
+        "id": "Q26",
+        "category": "multi_hop",
+        "question": "For the LASER-02, what is the current assist-gas pressure and which document changed it?",
+        "expected_doc_ids": ["INC-2026-005", "MANUAL-LASER-02"],
+        "expected_answer_substrings": ["210 psi"],
+        "expected_tools": ["search_docs", "check_superseded"],
+    },
+    {
+        "id": "Q27",
+        "category": "multi_hop",
+        "question": (
+            "What is the difference between the MANUAL-GRND-03 wheel-dressing interval "
+            "and the current requirement?"
+        ),
+        "expected_doc_ids": ["MANUAL-GRND-03", "INC-2026-007"],
+        "expected_answer_substrings": ["25 h", "40 h"],
+        "expected_tools": ["search_docs"],
+    },
+    {
+        "id": "Q28",
+        "category": "multi_hop",
+        "question": (
+            "Which QA work instruction verifies safety-critical fastener torque and what "
+            "torque value does it use?"
+        ),
+        "expected_doc_ids": ["QC-WI-007"],
+        "expected_answer_substrings": ["22 n.m"],
+        "expected_tools": ["search_docs"],
+    },
+    {
+        "id": "Q29",
+        "category": "multi_hop",
+        "question": (
+            "What torque is required for the ASM-01 M8 safety-critical fasteners and which "
+            "work instruction verifies it?"
+        ),
+        "expected_doc_ids": ["MANUAL-ASM-01", "QC-WI-007"],
+        "expected_answer_substrings": ["22 n.m"],
+        "expected_tools": ["search_docs"],
+    },
+    {
+        "id": "Q30",
+        "category": "multi_hop",
+        "question": "Which asset manual lists fault code E-512 and what does it mean?",
+        "expected_doc_ids": ["MANUAL-CNC-12", "MANUAL-ROB-03", "MANUAL-CMM-04", "MANUAL-WELD-06"],
+        "expected_answer_substrings": ["encoder communication loss"],
+        "expected_tools": ["search_docs"],
+    },
+    # ---------------- refusal (5) ----------------
+    {
+        "id": "Q31",
+        "category": "refusal",
+        "question": "What is the torque spec for the Cell 7 palletizer?",
+        "expected_doc_ids": [],
+        "expected_answer_substrings": [],
+        "expected_tools": ["search_docs"],
+    },
+    {
+        "id": "Q32",
+        "category": "refusal",
+        "question": "How many maintenance technicians work the night shift in Cell 4?",
+        "expected_doc_ids": [],
+        "expected_answer_substrings": [],
+        "expected_tools": ["search_docs"],
+    },
+    {
+        "id": "Q33",
+        "category": "refusal",
+        "question": "What is the serial number of the CNC-07 spindle motor?",
+        "expected_doc_ids": [],
+        "expected_answer_substrings": [],
+        "expected_tools": ["search_docs"],
+    },
+    {
+        "id": "Q34",
+        "category": "refusal",
+        "question": "What is the warranty period on the LASER-02 chiller?",
+        "expected_doc_ids": [],
+        "expected_answer_substrings": [],
+        "expected_tools": ["search_docs"],
+    },
+    {
+        "id": "Q35",
+        "category": "refusal",
+        "question": "Which firmware version runs on the CMM-04 controller?",
+        "expected_doc_ids": [],
+        "expected_answer_substrings": [],
+        "expected_tools": ["search_docs"],
+    },
+]
+
+CATEGORIES = ("lookup", "numeric", "supersede", "multi_hop", "refusal")
+
+
+def build_gold(out_path: str | Path = "data/gold/questions.jsonl") -> list[dict]:
+    """Write the gold set as JSONL and return the questions."""
+    path = Path(out_path)
+    path.parent.mkdir(parents=True, exist_ok=True)
+    with path.open("w", encoding="utf-8") as fh:
+        for q in QUESTIONS:
+            fh.write(json.dumps(q, ensure_ascii=False) + "\n")
+    return QUESTIONS
+
+
+def load_gold(path: str | Path = "data/gold/questions.jsonl") -> list[dict]:
+    p = Path(path)
+    if not p.exists():
+        return list(QUESTIONS)
+    out: list[dict] = []
+    for line in p.read_text(encoding="utf-8").splitlines():
+        line = line.strip()
+        if line:
+            out.append(json.loads(line))
+    return out
+
+
+if __name__ == "__main__":  # pragma: no cover
+    qs = build_gold()
+    print(f"wrote {len(qs)} questions")
