@@ -1,0 +1,38 @@
+/opt/anaconda3/envs/localrag/bin/python -m localrag.cli demo
+─────────────── LocalRAG Hero Demo — Northline Precision Cell 4 ────────────────
+corpus 40 documents (existing)
+index (existing)
+backend: transformers on cpu
+
+╭─── Q1 · lookup · What does fault code E-318 indicate on the PRS-02 press? ───╮
+│ Fault code E-318 indicates an intermittent E-318 trip during rapid approach  │
+│ on the PRS-02 press.                                                         │
+╰─── tools: search_docs, search_docs, lookup_asset, get_spec_value · 21.31s ───╯
+  citations: INC-2026-002 §1 (rev A, 2026-02-18)
+
+╭─ Q2 · numeric · What is the torque spec for the CNC-12 turret clamp bolts? ──╮
+│ The torque specification for the CNC-12 turret clamp bolts is 38 N·m. This   │
+│ can be found in the manual (Manual-CNC-12 §4, rev B, 2024-11-08).            │
+╰─ tools: search_docs, lookup_asset, get_spec_value, check_superseded · 22.51s─╯
+  citations: MANUAL-CNC-12 §4 (rev B, 2024-11-08)
+
+╭─ Q3 · supersede · What is the current torque spec for the CNC-07 spindle cla─╮
+│ The current torque specification for the CNC-07 spindle clamp bolts is 52    │
+│ N·m. This information can be found in the manual section titled "Spindle     │
+│ Clamp Bolts" under Revision A, which states that the previous value was 45   │
+│ N·m and the new value is now 52 N·m.                                         │
+╰─ tools: search_docs, lookup_asset, get_spec_value, check_superseded · 26.44s─╯
+  citations: INC-2026-001 §1 (rev A, 2026-03-01)
+
+╭─ Q4 · supersede · What is the current assist-gas pressure for the LASER-02? ─╮
+│ The current assist-gas pressure for the LASER-02 is 210 PSI. This            │
+│ information can be found in manual section 4 of the LASER-02 maintenance     │
+│ manual.                                                                      │
+╰─ tools: search_docs, lookup_asset, get_spec_value, check_superseded · 20.34s─╯
+  citations: INC-2026-005 §1 (rev A, 2026-03-11)
+
+╭─── Q5 · refusal · What is the serial number of the CNC-07 spindle motor? ────╮
+│ INSUFFICIENT_EVIDENCE                                                        │
+╰─ tools: search_docs, lookup_asset, get_spec_value, check_superseded · 14.79s─╯
+  citations: no citation (refusal)
+

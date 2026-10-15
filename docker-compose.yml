@@ -1,0 +1,88 @@
+# ---------------------------------------------------------------------------
+# LocalRAG Hero Demo — docker compose
+#
+#   docker compose run --rm localrag demo          # GPU agent (default)
+#   docker compose --profile vllm up -d vllm        # optional vLLM endpoint
+#   LOCALRAG_ENDPOINT=http://localhost:8000/v1 docker compose run --rm \
+#       -e LOCALRAG_BACKEND=openai_compat localrag demo
+#
+# ---------------------------------------------------------------------------
+services:
+  localrag:
+    build:
+      context: .
+      args:
+        BASE: ${BASE:-nvidia/cuda:12.4.1-runtime-ubuntu22.04}
+    image: localrag-hero:gpu
+    environment:
+      # Point the agent at a local OpenAI-compatible endpoint (vLLM / NIM).
+      LOCALRAG_ENDPOINT: ${LOCALRAG_ENDPOINT:-}
+      LOCALRAG_API_KEY: ${LOCALRAG_API_KEY:-}
+      LOCALRAG_BACKEND: ${LOCALRAG_BACKEND:-auto}
+    volumes:
+      - ./data:/app/data
+      - ./results:/app/results
+      - hf_cache:/root/.cache/huggingface
+    # --- GPU reservation (NVIDIA Container Toolkit) ---
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              count: all
+              capabilities: [gpu]
+    # --- CPU-only variant: comment out the deploy block above and use
+    #     BASE=python:3.11-slim, then uncomment the two lines below. ---
+    # deploy:
+    #   resources: {}
+    # runtime: nvidia   # (older docker versions) alternatively use runtime: nvidia
+    command: ["demo"]
+
+  # Optional OpenAI-compatible inference server. Commented NIM note below.
+  vllm:
+    image: vllm/vllm-openai:latest
+    profiles: ["vllm"]
+    command: >
+      --model Qwen/Qwen2.5-1.5B-Instruct
+      --host 0.0.0.0 --port 8000 --dtype auto
+    ports:
+      - "8000:8000"
+    volumes:
+      - hf_cache:/root/.cache/huggingface
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              count: all
+              capabilities: [gpu]
+    # -----------------------------------------------------------------------
+    # NVIDIA NIM substitution
+    # -----------------------------------------------------------------------
+    # To use an NVIDIA NIM container instead of vLLM, replace this service with:
+    #
+    #   nim:
+    #     image: nvcr.io/nim/<org>/<model>:<tag>       # e.g. nvcr.io/nim/meta/llama-3.1-8b-instruct:latest
+    #     environment:
+    #       NGC_API_KEY: ${NGC_API_KEY}               # required by NIM
+    #       NIM_MAX_MODEL_LEN: "4096"
+    #     ports:
+    #       - "8000:8000"                             # NIM exposes the same OpenAI API on :8000
+    #     volumes:
+    #       - nim_cache:/opt/nim/.cache
+    #     deploy:
+    #       resources:
+    #         reservations:
+    #           devices:
+    #             - driver: nvidia
+    #               count: all
+    #               capabilities: [gpu]
+    #
+    # Then point the agent at it:
+    #   LOCALRAG_ENDPOINT=http://nim:8000/v1 LOCALRAG_API_KEY=$NGC_API_KEY
+    # The agent path is identical — only the base_url and API key change.
+    # -----------------------------------------------------------------------
+
+volumes:
+  hf_cache:
+  nim_cache:
