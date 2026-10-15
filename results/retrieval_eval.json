@@ -1,0 +1,1392 @@
+{
+  "generated_utc": "2026-10-15T07:28:25+00:00",
+  "k_values": [
+    1,
+    3,
+    5
+  ],
+  "n_questions_total": 35,
+  "n_questions_scored": 30,
+  "n_questions_skipped_no_gold": 5,
+  "best_config_by_mrr": "dense_only",
+  "index_meta": {
+    "dim": 384,
+    "chunk_count": 204,
+    "ann_backend": "faiss",
+    "embedding_model": "sentence-transformers/all-MiniLM-L6-v2",
+    "embedding_backend": "sentence_transformers",
+    "device": "cpu",
+    "build_seconds": 0.715,
+    "corpus_dir": "/Users/abhiramkasireddi/LocalRagHeroDemo/data/corpus",
+    "created_utc": "2026-10-15T07:23:12+00:00",
+    "load_error": null
+  },
+  "configs": {
+    "dense_only": {
+      "recall@1": 0.6333,
+      "recall@3": 0.8,
+      "recall@5": 0.9,
+      "mrr": 0.7289,
+      "mean_latency_ms": 0.793,
+      "p95_latency_ms": 0.903,
+      "n_questions": 30
+    },
+    "bm25_only": {
+      "recall@1": 0.5667,
+      "recall@3": 0.8667,
+      "recall@5": 0.9667,
+      "mrr": 0.7272,
+      "mean_latency_ms": 0.399,
+      "p95_latency_ms": 0.522,
+      "n_questions": 30
+    },
+    "hybrid_rrf": {
+      "recall@1": 0.5333,
+      "recall@3": 0.8667,
+      "recall@5": 0.9333,
+      "mrr": 0.7039,
+      "mean_latency_ms": 0.334,
+      "p95_latency_ms": 0.435,
+      "n_questions": 30
+    },
+    "hybrid_rrf_recency": {
+      "recall@1": 0.5667,
+      "recall@3": 0.8333,
+      "recall@5": 0.9333,
+      "mrr": 0.7028,
+      "mean_latency_ms": 0.309,
+      "p95_latency_ms": 0.375,
+      "n_questions": 30
+    }
+  },
+  "per_question": {
+    "dense_only": {
+      "Q01": {
+        "retrieved_doc_ids": [
+          "MANUAL-ASM-01",
+          "MANUAL-CMM-04",
+          "MANUAL-ROB-03",
+          "MANUAL-WELD-06",
+          "MANUAL-CONV-05"
+        ],
+        "first_hit_rank": null,
+        "top_citation": "MANUAL-ASM-01 \u00a73 (rev A, 2025-07-03)"
+      },
+      "Q02": {
+        "retrieved_doc_ids": [
+          "QC-WI-009",
+          "QC-WI-009",
+          "MANUAL-CNC-07",
+          "MANUAL-CMM-04",
+          "MANUAL-CNC-12"
+        ],
+        "first_hit_rank": 3,
+        "top_citation": "QC-WI-009 (rev B, 2025-05-15)"
+      },
+      "Q03": {
+        "retrieved_doc_ids": [
+          "QC-WI-009",
+          "MANUAL-GRND-03",
+          "MANUAL-PRS-02",
+          "MANUAL-CNC-07",
+          "MANUAL-LASER-02"
+        ],
+        "first_hit_rank": 4,
+        "top_citation": "QC-WI-009 \u00a71 (rev B, 2025-05-15)"
+      },
+      "Q04": {
+        "retrieved_doc_ids": [
+          "QC-WI-005",
+          "QC-WI-005",
+          "SPEC-CNC-12",
+          "SPEC-CNC-07",
+          "INC-2026-003"
+        ],
+        "first_hit_rank": 1,
+        "top_citation": "QC-WI-005 (rev D, 2025-09-20)"
+      },
+      "Q05": {
+        "retrieved_doc_ids": [
+          "QC-WI-001",
+          "QC-WI-003",
+          "QC-WI-010",
+          "QC-WI-001",
+          "QC-WI-007"
+        ],
+        "first_hit_rank": 1,
+        "top_citation": "QC-WI-001 (rev B, 2025-05-01)"
+      },
+      "Q06": {
+        "retrieved_doc_ids": [
+          "MANUAL-ASM-01",
+          "MANUAL-LASER-02",
+          "MANUAL-WELD-06",
+          "MANUAL-CONV-05",
+          "MANUAL-PRS-02"
+        ],
+        "first_hit_rank": 5,
+        "top_citation": "MANUAL-ASM-01 \u00a73 (rev A, 2025-07-03)"
+      },
+      "Q07": {
+        "retrieved_doc_ids": [
+          "SPEC-CNC-07",
+          "SPEC-CNC-07",
+          "MANUAL-CNC-07",
+          "INC-2026-001",
+          "MANUAL-CNC-12"
+        ],
+        "first_hit_rank": 1,
+        "top_citation": "SPEC-CNC-07 \u00a71 (rev B, 2025-04-02)"
+      },
+      "Q08": {
+        "retrieved_doc_ids": [
+          "QC-WI-009",
+          "QC-WI-009",
+          "MANUAL-CNC-07",
+          "QC-WI-009",
+          "MANUAL-WASH-01"
+        ],
+        "first_hit_rank": 1,
+        "top_citation": "QC-WI-009 (rev B, 2025-05-15)"
+      },
+      "Q09": {
+        "retrieved_doc_ids": [
+          "MANUAL-ROB-03",
+          "SPEC-ROB-03",
+          "MANUAL-CMM-04",
+          "MANUAL-PRS-02",
+          "MANUAL-ROB-03"
+        ],
+        "first_hit_rank": 2,
+        "top_citation": "MANUAL-ROB-03 (rev A, 2025-02-20)"
+      },
+      "Q10": {
+        "retrieved_doc_ids": [
+          "MANUAL-WELD-06",
+          "MANUAL-ASM-01",
+          "INC-2026-004",
+          "MANUAL-CONV-05",
+          "MANUAL-CMM-04"
+        ],
+        "first_hit_rank": 1,
+        "top_citation": "MANUAL-WELD-06 \u00a73 (rev B, 2025-04-10)"
+      },
+      "Q11": {
+        "retrieved_doc_ids": [
+          "MANUAL-CNC-12",
+          "SPEC-CNC-12",
+          "SPEC-CNC-07",
+          "SPEC-ROB-03",
+          "INC-2026-001"
+        ],
+        "first_hit_rank": 1,
+        "top_citation": "MANUAL-CNC-12 \u00a74 (rev B, 2024-11-08)"
+      },
+      "Q12": {
+        "retrieved_doc_ids": [
+          "INC-2026-001",
+          "SPEC-CNC-07",
+          "MANUAL-CNC-07",
+          "QC-WI-004",
+          "MANUAL-ROB-03"
+        ],
+        "first_hit_rank": 3,
+        "top_citation": "INC-2026-001 \u00a71 (rev A, 2026-03-01)"
+      },
+      "Q13": {
+        "retrieved_doc_ids": [
+          "INC-2026-002",
+          "MANUAL-PRS-02",
+          "MANUAL-ROB-03",
+          "MANUAL-PRS-02",
+          "MANUAL-DRLL-08"
+        ],
+        "first_hit_rank": 2,
+        "top_citation": "INC-2026-002 \u00a71 (rev A, 2026-02-18)"
+      },
+      "Q14": {
+        "retrieved_doc_ids": [
+          "SPEC-ROB-03",
+          "SPEC-CNC-07",
+          "MANUAL-ROB-03",
+          "MANUAL-GRND-03",
+          "SPEC-CNC-12"
+        ],
+        "first_hit_rank": null,
+        "top_citation": "SPEC-ROB-03 \u00a73 (rev A, 2025-01-30)"
+      },
+      "Q15": {
+        "retrieved_doc_ids": [
+          "MANUAL-LASER-02",
+          "SPEC-LASER-02",
+          "MANUAL-CMM-04",
+          "SPEC-LASER-02",
+          "INC-2026-005"
+        ],
+        "first_hit_rank": 1,
+        "top_citation": "MANUAL-LASER-02 \u00a74 (rev B, 2025-05-22)"
+      },
+      "Q16": {
+        "retrieved_doc_ids": [
+          "MANUAL-DRLL-08",
+          "MANUAL-CNC-12",
+          "SPEC-CNC-12",
+          "MANUAL-GRND-03",
+          "SPEC-GRND-03"
+        ],
+        "first_hit_rank": 1,
+        "top_citation": "MANUAL-DRLL-08 \u00a74 (rev A, 2025-01-09)"
+      },
+      "Q17": {
+        "retrieved_doc_ids": [
+          "MANUAL-GRND-03",
+          "SPEC-GRND-03",
+          "MANUAL-DRLL-08",
+          "MANUAL-CNC-12",
+          "MANUAL-GRND-03"
+        ],
+        "first_hit_rank": 1,
+        "top_citation": "MANUAL-GRND-03 \u00a74 (rev B, 2024-10-16)"
+      },
+      "Q18": {
+        "retrieved_doc_ids": [
+          "MANUAL-DRLL-08",
+          "MANUAL-CMM-04",
+          "MANUAL-PRS-02",
+          "MANUAL-WASH-01",
+          "INC-2026-002"
+        ],
+        "first_hit_rank": null,
+        "top_citation": "MANUAL-DRLL-08 \u00a72 (rev A, 2025-01-09)"
+      },
+      "Q19": {
+        "retrieved_doc_ids": [
+          "INC-2026-001",
+          "INC-2026-001",
+          "SPEC-CNC-07",
+          "MANUAL-CNC-07",
+          "MANUAL-CNC-12"
+        ],
+        "first_hit_rank": 1,
+        "top_citation": "INC-2026-001 \u00a71 (rev A, 2026-03-01)"
+      },
+      "Q20": {
+        "retrieved_doc_ids": [
+          "INC-2026-002",
+          "INC-2026-002",
+          "SPEC-PRS-02",
+          "MANUAL-PRS-02",
+          "MANUAL-DRLL-08"
+        ],
+        "first_hit_rank": 1,
+        "top_citation": "INC-2026-002 \u00a71 (rev A, 2026-02-18)"
+      },
+      "Q21": {
+        "retrieved_doc_ids": [
+          "QC-WI-005",
+          "QC-WI-005",
+          "SPEC-CNC-12",
+          "INC-2026-003",
+          "QC-WI-004"
+        ],
+        "first_hit_rank": 4,
+        "top_citation": "QC-WI-005 (rev D, 2025-09-20)"
+      },
+      "Q22": {
+        "retrieved_doc_ids": [
+          "INC-2026-004",
+          "INC-2026-004",
+          "INC-2026-004",
+          "INC-2026-004",
+          "SPEC-WELD-06"
+        ],
+        "first_hit_rank": 1,
+        "top_citation": "INC-2026-004 \u00a72 (rev A, 2026-02-05)"
+      },
+      "Q23": {
+        "retrieved_doc_ids": [
+          "INC-2026-008",
+          "INC-2026-003",
+          "INC-2026-008",
+          "SPEC-CMM-04",
+          "QC-WI-002"
+        ],
+        "first_hit_rank": 1,
+        "top_citation": "INC-2026-008 \u00a71 (rev A, 2026-03-20)"
+      },
+      "Q24": {
+        "retrieved_doc_ids": [
+          "MANUAL-CNC-12",
+          "MANUAL-CNC-07",
+          "MANUAL-GRND-03",
+          "MANUAL-DRLL-08",
+          "SPEC-CNC-07"
+        ],
+        "first_hit_rank": 2,
+        "top_citation": "MANUAL-CNC-12 \u00a73 (rev B, 2024-11-08)"
+      },
+      "Q25": {
+        "retrieved_doc_ids": [
+          "INC-2026-006",
+          "SPEC-CONV-05",
+          "INC-2026-006",
+          "INC-2026-006",
+          "SPEC-CONV-05"
+        ],
+        "first_hit_rank": 1,
+        "top_citation": "INC-2026-006 \u00a71 (rev A, 2026-01-15)"
+      },
+      "Q26": {
+        "retrieved_doc_ids": [
+          "INC-2026-005",
+          "INC-2026-005",
+          "INC-2026-002",
+          "MANUAL-LASER-02",
+          "MANUAL-DRLL-08"
+        ],
+        "first_hit_rank": 1,
+        "top_citation": "INC-2026-005 \u00a72 (rev A, 2026-03-11)"
+      },
+      "Q27": {
+        "retrieved_doc_ids": [
+          "INC-2026-007",
+          "MANUAL-GRND-03",
+          "INC-2026-007",
+          "MANUAL-GRND-03",
+          "SPEC-GRND-03"
+        ],
+        "first_hit_rank": 1,
+        "top_citation": "INC-2026-007 \u00a71 (rev A, 2026-02-27)"
+      },
+      "Q28": {
+        "retrieved_doc_ids": [
+          "QC-WI-007",
+          "QC-WI-007",
+          "MANUAL-ASM-01",
+          "QC-WI-004",
+          "MANUAL-CNC-07"
+        ],
+        "first_hit_rank": 1,
+        "top_citation": "QC-WI-007 (rev C, 2025-07-08)"
+      },
+      "Q29": {
+        "retrieved_doc_ids": [
+          "QC-WI-007",
+          "QC-WI-007",
+          "MANUAL-ROB-03",
+          "MANUAL-CNC-12",
+          "MANUAL-ASM-01"
+        ],
+        "first_hit_rank": 1,
+        "top_citation": "QC-WI-007 \u00a71 (rev C, 2025-07-08)"
+      },
+      "Q30": {
+        "retrieved_doc_ids": [
+          "MANUAL-CMM-04",
+          "MANUAL-WELD-06",
+          "MANUAL-ASM-01",
+          "MANUAL-ROB-03",
+          "MANUAL-CNC-12"
+        ],
+        "first_hit_rank": 1,
+        "top_citation": "MANUAL-CMM-04 \u00a73 (rev C, 2025-08-01)"
+      }
+    },
+    "bm25_only": {
+      "Q01": {
+        "retrieved_doc_ids": [
+          "MANUAL-LASER-02",
+          "MANUAL-ASM-01",
+          "MANUAL-CONV-05",
+          "MANUAL-CMM-04",
+          "MANUAL-WELD-06"
+        ],
+        "first_hit_rank": null,
+        "top_citation": "MANUAL-LASER-02 \u00a73 (rev B, 2025-05-22)"
+      },
+      "Q02": {
+        "retrieved_doc_ids": [
+          "QC-WI-009",
+          "MANUAL-GRND-03",
+          "QC-WI-009",
+          "INC-2026-001",
+          "MANUAL-CNC-07"
+        ],
+        "first_hit_rank": 5,
+        "top_citation": "QC-WI-009 (rev B, 2025-05-15)"
+      },
+      "Q03": {
+        "retrieved_doc_ids": [
+          "INC-2026-001",
+          "INC-2026-008",
+          "MANUAL-CNC-07",
+          "MANUAL-CONV-05",
+          "MANUAL-CNC-07"
+        ],
+        "first_hit_rank": 3,
+        "top_citation": "INC-2026-001 \u00a71 (rev A, 2026-03-01)"
+      },
+      "Q04": {
+        "retrieved_doc_ids": [
+          "QC-WI-005",
+          "QC-WI-005",
+          "INC-2026-003",
+          "MANUAL-GRND-03",
+          "INC-2026-003"
+        ],
+        "first_hit_rank": 1,
+        "top_citation": "QC-WI-005 (rev D, 2025-09-20)"
+      },
+      "Q05": {
+        "retrieved_doc_ids": [
+          "QC-WI-001",
+          "QC-WI-007",
+          "QC-WI-009",
+          "QC-WI-003",
+          "QC-WI-004"
+        ],
+        "first_hit_rank": 1,
+        "top_citation": "QC-WI-001 (rev B, 2025-05-01)"
+      },
+      "Q06": {
+        "retrieved_doc_ids": [
+          "INC-2026-002",
+          "MANUAL-PRS-02",
+          "MANUAL-ASM-01",
+          "MANUAL-CONV-05",
+          "MANUAL-LASER-02"
+        ],
+        "first_hit_rank": 2,
+        "top_citation": "INC-2026-002 \u00a71 (rev A, 2026-02-18)"
+      },
+      "Q07": {
+        "retrieved_doc_ids": [
+          "INC-2026-001",
+          "MANUAL-CNC-07",
+          "MANUAL-GRND-03",
+          "QC-WI-002",
+          "SPEC-CNC-07"
+        ],
+        "first_hit_rank": 5,
+        "top_citation": "INC-2026-001 \u00a71 (rev A, 2026-03-01)"
+      },
+      "Q08": {
+        "retrieved_doc_ids": [
+          "QC-WI-009",
+          "QC-WI-009",
+          "QC-WI-009",
+          "INC-2026-007",
+          "QC-WI-009"
+        ],
+        "first_hit_rank": 1,
+        "top_citation": "QC-WI-009 (rev B, 2025-05-15)"
+      },
+      "Q09": {
+        "retrieved_doc_ids": [
+          "MANUAL-ROB-03",
+          "SPEC-ROB-03",
+          "MANUAL-GRND-03",
+          "MANUAL-CNC-12",
+          "MANUAL-ROB-03"
+        ],
+        "first_hit_rank": 2,
+        "top_citation": "MANUAL-ROB-03 (rev A, 2025-02-20)"
+      },
+      "Q10": {
+        "retrieved_doc_ids": [
+          "MANUAL-WELD-06",
+          "INC-2026-004",
+          "SPEC-WELD-06",
+          "QC-WI-006",
+          "MANUAL-ASM-01"
+        ],
+        "first_hit_rank": 1,
+        "top_citation": "MANUAL-WELD-06 (rev B, 2025-04-10)"
+      },
+      "Q11": {
+        "retrieved_doc_ids": [
+          "INC-2026-001",
+          "MANUAL-CNC-12",
+          "SPEC-CNC-12",
+          "MANUAL-CNC-12",
+          "INC-2026-008"
+        ],
+        "first_hit_rank": 2,
+        "top_citation": "INC-2026-001 \u00a71 (rev A, 2026-03-01)"
+      },
+      "Q12": {
+        "retrieved_doc_ids": [
+          "INC-2026-001",
+          "INC-2026-001",
+          "SPEC-CNC-07",
+          "MANUAL-CNC-07",
+          "MANUAL-CNC-07"
+        ],
+        "first_hit_rank": 4,
+        "top_citation": "INC-2026-001 \u00a73 (rev A, 2026-03-01)"
+      },
+      "Q13": {
+        "retrieved_doc_ids": [
+          "MANUAL-PRS-02",
+          "INC-2026-002",
+          "MANUAL-PRS-02",
+          "INC-2026-002",
+          "SPEC-PRS-02"
+        ],
+        "first_hit_rank": 1,
+        "top_citation": "MANUAL-PRS-02 \u00a72 (rev D, 2025-09-12)"
+      },
+      "Q14": {
+        "retrieved_doc_ids": [
+          "MANUAL-WELD-06",
+          "SPEC-WELD-06",
+          "MANUAL-WELD-06",
+          "SPEC-WELD-06",
+          "QC-WI-006"
+        ],
+        "first_hit_rank": 1,
+        "top_citation": "MANUAL-WELD-06 (rev B, 2025-04-10)"
+      },
+      "Q15": {
+        "retrieved_doc_ids": [
+          "SPEC-LASER-02",
+          "MANUAL-LASER-02",
+          "INC-2026-002",
+          "MANUAL-LASER-02",
+          "MANUAL-ASM-01"
+        ],
+        "first_hit_rank": 2,
+        "top_citation": "SPEC-LASER-02 \u00a73 (rev A, 2025-03-30)"
+      },
+      "Q16": {
+        "retrieved_doc_ids": [
+          "MANUAL-DRLL-08",
+          "MANUAL-ASM-01",
+          "MANUAL-DRLL-08",
+          "MANUAL-CNC-12",
+          "SPEC-CNC-12"
+        ],
+        "first_hit_rank": 1,
+        "top_citation": "MANUAL-DRLL-08 (rev A, 2025-01-09)"
+      },
+      "Q17": {
+        "retrieved_doc_ids": [
+          "SPEC-GRND-03",
+          "MANUAL-GRND-03",
+          "MANUAL-GRND-03",
+          "MANUAL-GRND-03",
+          "INC-2026-007"
+        ],
+        "first_hit_rank": 2,
+        "top_citation": "SPEC-GRND-03 \u00a73 (rev A, 2024-08-28)"
+      },
+      "Q18": {
+        "retrieved_doc_ids": [
+          "MANUAL-DRLL-08",
+          "MANUAL-CNC-07",
+          "MANUAL-CMM-04",
+          "MANUAL-CNC-07",
+          "MANUAL-LASER-02"
+        ],
+        "first_hit_rank": 2,
+        "top_citation": "MANUAL-DRLL-08 \u00a72 (rev A, 2025-01-09)"
+      },
+      "Q19": {
+        "retrieved_doc_ids": [
+          "INC-2026-001",
+          "MANUAL-LASER-02",
+          "INC-2026-001",
+          "INC-2026-001",
+          "SPEC-CNC-07"
+        ],
+        "first_hit_rank": 1,
+        "top_citation": "INC-2026-001 \u00a71 (rev A, 2026-03-01)"
+      },
+      "Q20": {
+        "retrieved_doc_ids": [
+          "INC-2026-002",
+          "MANUAL-LASER-02",
+          "INC-2026-002",
+          "MANUAL-PRS-02",
+          "SPEC-PRS-02"
+        ],
+        "first_hit_rank": 1,
+        "top_citation": "INC-2026-002 \u00a71 (rev A, 2026-02-18)"
+      },
+      "Q21": {
+        "retrieved_doc_ids": [
+          "QC-WI-005",
+          "QC-WI-005",
+          "INC-2026-003",
+          "INC-2026-003",
+          "INC-2026-003"
+        ],
+        "first_hit_rank": 3,
+        "top_citation": "QC-WI-005 (rev D, 2025-09-20)"
+      },
+      "Q22": {
+        "retrieved_doc_ids": [
+          "INC-2026-004",
+          "MANUAL-WELD-06",
+          "SPEC-WELD-06",
+          "MANUAL-WELD-06",
+          "INC-2026-004"
+        ],
+        "first_hit_rank": 1,
+        "top_citation": "INC-2026-004 \u00a72 (rev A, 2026-02-05)"
+      },
+      "Q23": {
+        "retrieved_doc_ids": [
+          "INC-2026-008",
+          "INC-2026-003",
+          "INC-2026-008",
+          "MANUAL-CMM-04",
+          "QC-WI-005"
+        ],
+        "first_hit_rank": 1,
+        "top_citation": "INC-2026-008 \u00a71 (rev A, 2026-03-20)"
+      },
+      "Q24": {
+        "retrieved_doc_ids": [
+          "MANUAL-CNC-12",
+          "MANUAL-CNC-07",
+          "MANUAL-DRLL-08",
+          "MANUAL-GRND-03",
+          "QC-WI-009"
+        ],
+        "first_hit_rank": 2,
+        "top_citation": "MANUAL-CNC-12 \u00a73 (rev B, 2024-11-08)"
+      },
+      "Q25": {
+        "retrieved_doc_ids": [
+          "INC-2026-006",
+          "MANUAL-CONV-05",
+          "INC-2026-006",
+          "INC-2026-006",
+          "MANUAL-CONV-05"
+        ],
+        "first_hit_rank": 1,
+        "top_citation": "INC-2026-006 \u00a72 (rev A, 2026-01-15)"
+      },
+      "Q26": {
+        "retrieved_doc_ids": [
+          "MANUAL-LASER-02",
+          "INC-2026-005",
+          "INC-2026-005",
+          "MANUAL-LASER-02",
+          "MANUAL-GRND-03"
+        ],
+        "first_hit_rank": 1,
+        "top_citation": "MANUAL-LASER-02 \u00a72 (rev B, 2025-05-22)"
+      },
+      "Q27": {
+        "retrieved_doc_ids": [
+          "MANUAL-GRND-03",
+          "INC-2026-007",
+          "QC-WI-003",
+          "INC-2026-007",
+          "QC-WI-003"
+        ],
+        "first_hit_rank": 1,
+        "top_citation": "MANUAL-GRND-03 \u00a72 (rev B, 2024-10-16)"
+      },
+      "Q28": {
+        "retrieved_doc_ids": [
+          "QC-WI-007",
+          "MANUAL-CMM-04",
+          "MANUAL-CNC-12",
+          "QC-WI-002",
+          "QC-WI-009"
+        ],
+        "first_hit_rank": 1,
+        "top_citation": "QC-WI-007 (rev C, 2025-07-08)"
+      },
+      "Q29": {
+        "retrieved_doc_ids": [
+          "QC-WI-007",
+          "QC-WI-007",
+          "MANUAL-ASM-01",
+          "MANUAL-ASM-01",
+          "QC-WI-002"
+        ],
+        "first_hit_rank": 1,
+        "top_citation": "QC-WI-007 (rev C, 2025-07-08)"
+      },
+      "Q30": {
+        "retrieved_doc_ids": [
+          "MANUAL-CMM-04",
+          "MANUAL-WELD-06",
+          "MANUAL-ROB-03",
+          "MANUAL-ASM-01",
+          "MANUAL-CONV-05"
+        ],
+        "first_hit_rank": 1,
+        "top_citation": "MANUAL-CMM-04 \u00a73 (rev C, 2025-08-01)"
+      }
+    },
+    "hybrid_rrf": {
+      "Q01": {
+        "retrieved_doc_ids": [
+          "MANUAL-ASM-01",
+          "MANUAL-CMM-04",
+          "MANUAL-LASER-02",
+          "MANUAL-CONV-05",
+          "MANUAL-WELD-06"
+        ],
+        "first_hit_rank": null,
+        "top_citation": "MANUAL-ASM-01 \u00a73 (rev A, 2025-07-03)"
+      },
+      "Q02": {
+        "retrieved_doc_ids": [
+          "QC-WI-009",
+          "QC-WI-009",
+          "MANUAL-GRND-03",
+          "MANUAL-CNC-07",
+          "MANUAL-LASER-02"
+        ],
+        "first_hit_rank": 4,
+        "top_citation": "QC-WI-009 (rev B, 2025-05-15)"
+      },
+      "Q03": {
+        "retrieved_doc_ids": [
+          "MANUAL-CNC-07",
+          "MANUAL-PRS-02",
+          "QC-WI-009",
+          "MANUAL-CONV-05",
+          "INC-2026-001"
+        ],
+        "first_hit_rank": 1,
+        "top_citation": "MANUAL-CNC-07 \u00a71 (rev C, 2025-06-15)"
+      },
+      "Q04": {
+        "retrieved_doc_ids": [
+          "QC-WI-005",
+          "QC-WI-005",
+          "INC-2026-003",
+          "QC-WI-005",
+          "SPEC-WELD-06"
+        ],
+        "first_hit_rank": 1,
+        "top_citation": "QC-WI-005 (rev D, 2025-09-20)"
+      },
+      "Q05": {
+        "retrieved_doc_ids": [
+          "QC-WI-001",
+          "QC-WI-003",
+          "QC-WI-010",
+          "QC-WI-008",
+          "QC-WI-007"
+        ],
+        "first_hit_rank": 1,
+        "top_citation": "QC-WI-001 (rev B, 2025-05-01)"
+      },
+      "Q06": {
+        "retrieved_doc_ids": [
+          "MANUAL-ASM-01",
+          "MANUAL-LASER-02",
+          "MANUAL-CONV-05",
+          "MANUAL-WELD-06",
+          "MANUAL-PRS-02"
+        ],
+        "first_hit_rank": 5,
+        "top_citation": "MANUAL-ASM-01 \u00a73 (rev A, 2025-07-03)"
+      },
+      "Q07": {
+        "retrieved_doc_ids": [
+          "INC-2026-001",
+          "SPEC-CNC-07",
+          "MANUAL-CNC-07",
+          "SPEC-CNC-07",
+          "MANUAL-GRND-03"
+        ],
+        "first_hit_rank": 2,
+        "top_citation": "INC-2026-001 \u00a71 (rev A, 2026-03-01)"
+      },
+      "Q08": {
+        "retrieved_doc_ids": [
+          "QC-WI-009",
+          "QC-WI-009",
+          "QC-WI-009",
+          "QC-WI-009",
+          "QC-WI-001"
+        ],
+        "first_hit_rank": 1,
+        "top_citation": "QC-WI-009 (rev B, 2025-05-15)"
+      },
+      "Q09": {
+        "retrieved_doc_ids": [
+          "MANUAL-ROB-03",
+          "SPEC-ROB-03",
+          "MANUAL-CMM-04",
+          "MANUAL-GRND-03",
+          "MANUAL-PRS-02"
+        ],
+        "first_hit_rank": 2,
+        "top_citation": "MANUAL-ROB-03 (rev A, 2025-02-20)"
+      },
+      "Q10": {
+        "retrieved_doc_ids": [
+          "INC-2026-004",
+          "MANUAL-WELD-06",
+          "MANUAL-ASM-01",
+          "MANUAL-WELD-06",
+          "SPEC-WELD-06"
+        ],
+        "first_hit_rank": 2,
+        "top_citation": "INC-2026-004 (rev A, 2026-02-05)"
+      },
+      "Q11": {
+        "retrieved_doc_ids": [
+          "MANUAL-CNC-12",
+          "INC-2026-001",
+          "SPEC-CNC-12",
+          "SPEC-CNC-07",
+          "MANUAL-CNC-07"
+        ],
+        "first_hit_rank": 1,
+        "top_citation": "MANUAL-CNC-12 \u00a74 (rev B, 2024-11-08)"
+      },
+      "Q12": {
+        "retrieved_doc_ids": [
+          "INC-2026-001",
+          "SPEC-CNC-07",
+          "MANUAL-CNC-07",
+          "MANUAL-CNC-07",
+          "SPEC-CNC-07"
+        ],
+        "first_hit_rank": 3,
+        "top_citation": "INC-2026-001 \u00a71 (rev A, 2026-03-01)"
+      },
+      "Q13": {
+        "retrieved_doc_ids": [
+          "INC-2026-002",
+          "MANUAL-PRS-02",
+          "MANUAL-PRS-02",
+          "INC-2026-002",
+          "MANUAL-PRS-02"
+        ],
+        "first_hit_rank": 2,
+        "top_citation": "INC-2026-002 \u00a71 (rev A, 2026-02-18)"
+      },
+      "Q14": {
+        "retrieved_doc_ids": [
+          "SPEC-WELD-06",
+          "MANUAL-WELD-06",
+          "INC-2026-004",
+          "SPEC-WELD-06",
+          "SPEC-ROB-03"
+        ],
+        "first_hit_rank": 2,
+        "top_citation": "SPEC-WELD-06 \u00a73 (rev A, 2025-02-14)"
+      },
+      "Q15": {
+        "retrieved_doc_ids": [
+          "SPEC-LASER-02",
+          "MANUAL-LASER-02",
+          "SPEC-LASER-02",
+          "INC-2026-005",
+          "MANUAL-ASM-01"
+        ],
+        "first_hit_rank": 2,
+        "top_citation": "SPEC-LASER-02 \u00a73 (rev A, 2025-03-30)"
+      },
+      "Q16": {
+        "retrieved_doc_ids": [
+          "MANUAL-DRLL-08",
+          "MANUAL-CNC-12",
+          "SPEC-CNC-12",
+          "MANUAL-DRLL-08",
+          "MANUAL-ASM-01"
+        ],
+        "first_hit_rank": 1,
+        "top_citation": "MANUAL-DRLL-08 \u00a74 (rev A, 2025-01-09)"
+      },
+      "Q17": {
+        "retrieved_doc_ids": [
+          "SPEC-GRND-03",
+          "MANUAL-GRND-03",
+          "MANUAL-GRND-03",
+          "MANUAL-DRLL-08",
+          "MANUAL-GRND-03"
+        ],
+        "first_hit_rank": 2,
+        "top_citation": "SPEC-GRND-03 \u00a73 (rev A, 2024-08-28)"
+      },
+      "Q18": {
+        "retrieved_doc_ids": [
+          "MANUAL-DRLL-08",
+          "MANUAL-CMM-04",
+          "MANUAL-PRS-02",
+          "MANUAL-WASH-01",
+          "MANUAL-LASER-02"
+        ],
+        "first_hit_rank": null,
+        "top_citation": "MANUAL-DRLL-08 \u00a72 (rev A, 2025-01-09)"
+      },
+      "Q19": {
+        "retrieved_doc_ids": [
+          "INC-2026-001",
+          "INC-2026-001",
+          "SPEC-CNC-07",
+          "MANUAL-CNC-12",
+          "MANUAL-CNC-07"
+        ],
+        "first_hit_rank": 1,
+        "top_citation": "INC-2026-001 \u00a71 (rev A, 2026-03-01)"
+      },
+      "Q20": {
+        "retrieved_doc_ids": [
+          "INC-2026-002",
+          "INC-2026-002",
+          "SPEC-PRS-02",
+          "MANUAL-PRS-02",
+          "MANUAL-PRS-02"
+        ],
+        "first_hit_rank": 1,
+        "top_citation": "INC-2026-002 \u00a71 (rev A, 2026-02-18)"
+      },
+      "Q21": {
+        "retrieved_doc_ids": [
+          "QC-WI-005",
+          "QC-WI-005",
+          "INC-2026-003",
+          "INC-2026-003",
+          "INC-2026-003"
+        ],
+        "first_hit_rank": 3,
+        "top_citation": "QC-WI-005 (rev D, 2025-09-20)"
+      },
+      "Q22": {
+        "retrieved_doc_ids": [
+          "INC-2026-004",
+          "SPEC-WELD-06",
+          "INC-2026-004",
+          "MANUAL-WELD-06",
+          "INC-2026-004"
+        ],
+        "first_hit_rank": 1,
+        "top_citation": "INC-2026-004 \u00a72 (rev A, 2026-02-05)"
+      },
+      "Q23": {
+        "retrieved_doc_ids": [
+          "INC-2026-008",
+          "INC-2026-003",
+          "INC-2026-008",
+          "QC-WI-005",
+          "INC-2026-008"
+        ],
+        "first_hit_rank": 1,
+        "top_citation": "INC-2026-008 \u00a71 (rev A, 2026-03-20)"
+      },
+      "Q24": {
+        "retrieved_doc_ids": [
+          "MANUAL-CNC-12",
+          "MANUAL-CNC-07",
+          "MANUAL-GRND-03",
+          "MANUAL-DRLL-08",
+          "MANUAL-LASER-02"
+        ],
+        "first_hit_rank": 2,
+        "top_citation": "MANUAL-CNC-12 \u00a73 (rev B, 2024-11-08)"
+      },
+      "Q25": {
+        "retrieved_doc_ids": [
+          "INC-2026-006",
+          "INC-2026-006",
+          "MANUAL-CONV-05",
+          "INC-2026-006",
+          "MANUAL-CONV-05"
+        ],
+        "first_hit_rank": 1,
+        "top_citation": "INC-2026-006 \u00a71 (rev A, 2026-01-15)"
+      },
+      "Q26": {
+        "retrieved_doc_ids": [
+          "INC-2026-005",
+          "MANUAL-LASER-02",
+          "INC-2026-002",
+          "INC-2026-005",
+          "MANUAL-LASER-02"
+        ],
+        "first_hit_rank": 1,
+        "top_citation": "INC-2026-005 \u00a72 (rev A, 2026-03-11)"
+      },
+      "Q27": {
+        "retrieved_doc_ids": [
+          "INC-2026-007",
+          "MANUAL-GRND-03",
+          "INC-2026-007",
+          "INC-2026-007",
+          "MANUAL-GRND-03"
+        ],
+        "first_hit_rank": 1,
+        "top_citation": "INC-2026-007 \u00a71 (rev A, 2026-02-27)"
+      },
+      "Q28": {
+        "retrieved_doc_ids": [
+          "QC-WI-007",
+          "MANUAL-ASM-01",
+          "MANUAL-CNC-12",
+          "QC-WI-007",
+          "MANUAL-CMM-04"
+        ],
+        "first_hit_rank": 1,
+        "top_citation": "QC-WI-007 (rev C, 2025-07-08)"
+      },
+      "Q29": {
+        "retrieved_doc_ids": [
+          "QC-WI-007",
+          "QC-WI-007",
+          "MANUAL-ASM-01",
+          "MANUAL-ASM-01",
+          "MANUAL-ROB-03"
+        ],
+        "first_hit_rank": 1,
+        "top_citation": "QC-WI-007 \u00a71 (rev C, 2025-07-08)"
+      },
+      "Q30": {
+        "retrieved_doc_ids": [
+          "MANUAL-CMM-04",
+          "MANUAL-WELD-06",
+          "MANUAL-ASM-01",
+          "MANUAL-ROB-03",
+          "MANUAL-CONV-05"
+        ],
+        "first_hit_rank": 1,
+        "top_citation": "MANUAL-CMM-04 \u00a73 (rev C, 2025-08-01)"
+      }
+    },
+    "hybrid_rrf_recency": {
+      "Q01": {
+        "retrieved_doc_ids": [
+          "MANUAL-ASM-01",
+          "MANUAL-CMM-04",
+          "MANUAL-LASER-02",
+          "MANUAL-WELD-06",
+          "MANUAL-CONV-05"
+        ],
+        "first_hit_rank": null,
+        "top_citation": "MANUAL-ASM-01 \u00a73 (rev A, 2025-07-03)"
+      },
+      "Q02": {
+        "retrieved_doc_ids": [
+          "QC-WI-009",
+          "QC-WI-009",
+          "MANUAL-CNC-07",
+          "MANUAL-LASER-02",
+          "SPEC-CNC-07"
+        ],
+        "first_hit_rank": 3,
+        "top_citation": "QC-WI-009 (rev B, 2025-05-15)"
+      },
+      "Q03": {
+        "retrieved_doc_ids": [
+          "MANUAL-CNC-07",
+          "MANUAL-PRS-02",
+          "INC-2026-001",
+          "QC-WI-009",
+          "MANUAL-CONV-05"
+        ],
+        "first_hit_rank": 1,
+        "top_citation": "MANUAL-CNC-07 \u00a71 (rev C, 2025-06-15)"
+      },
+      "Q04": {
+        "retrieved_doc_ids": [
+          "QC-WI-005",
+          "QC-WI-005",
+          "INC-2026-003",
+          "QC-WI-005",
+          "SPEC-WELD-06"
+        ],
+        "first_hit_rank": 1,
+        "top_citation": "QC-WI-005 (rev D, 2025-09-20)"
+      },
+      "Q05": {
+        "retrieved_doc_ids": [
+          "QC-WI-001",
+          "QC-WI-010",
+          "QC-WI-003",
+          "QC-WI-005",
+          "QC-WI-007"
+        ],
+        "first_hit_rank": 1,
+        "top_citation": "QC-WI-001 (rev B, 2025-05-01)"
+      },
+      "Q06": {
+        "retrieved_doc_ids": [
+          "MANUAL-ASM-01",
+          "INC-2026-002",
+          "MANUAL-LASER-02",
+          "MANUAL-PRS-02",
+          "MANUAL-CMM-04"
+        ],
+        "first_hit_rank": 4,
+        "top_citation": "MANUAL-ASM-01 \u00a73 (rev A, 2025-07-03)"
+      },
+      "Q07": {
+        "retrieved_doc_ids": [
+          "INC-2026-001",
+          "SPEC-CNC-07",
+          "MANUAL-CNC-07",
+          "SPEC-CNC-07",
+          "SPEC-CNC-12"
+        ],
+        "first_hit_rank": 2,
+        "top_citation": "INC-2026-001 \u00a71 (rev A, 2026-03-01)"
+      },
+      "Q08": {
+        "retrieved_doc_ids": [
+          "QC-WI-009",
+          "QC-WI-009",
+          "QC-WI-009",
+          "QC-WI-009",
+          "QC-WI-005"
+        ],
+        "first_hit_rank": 1,
+        "top_citation": "QC-WI-009 (rev B, 2025-05-15)"
+      },
+      "Q09": {
+        "retrieved_doc_ids": [
+          "MANUAL-ROB-03",
+          "SPEC-ROB-03",
+          "MANUAL-CMM-04",
+          "MANUAL-PRS-02",
+          "INC-2026-002"
+        ],
+        "first_hit_rank": 2,
+        "top_citation": "MANUAL-ROB-03 (rev A, 2025-02-20)"
+      },
+      "Q10": {
+        "retrieved_doc_ids": [
+          "INC-2026-004",
+          "MANUAL-ASM-01",
+          "MANUAL-WELD-06",
+          "MANUAL-WELD-06",
+          "SPEC-WELD-06"
+        ],
+        "first_hit_rank": 3,
+        "top_citation": "INC-2026-004 (rev A, 2026-02-05)"
+      },
+      "Q11": {
+        "retrieved_doc_ids": [
+          "INC-2026-001",
+          "INC-2026-001",
+          "MANUAL-CNC-12",
+          "SPEC-CNC-07",
+          "SPEC-CNC-12"
+        ],
+        "first_hit_rank": 3,
+        "top_citation": "INC-2026-001 \u00a71 (rev A, 2026-03-01)"
+      },
+      "Q12": {
+        "retrieved_doc_ids": [
+          "INC-2026-001",
+          "INC-2026-001",
+          "SPEC-CNC-07",
+          "MANUAL-CNC-07",
+          "SPEC-CNC-07"
+        ],
+        "first_hit_rank": 4,
+        "top_citation": "INC-2026-001 \u00a71 (rev A, 2026-03-01)"
+      },
+      "Q13": {
+        "retrieved_doc_ids": [
+          "INC-2026-002",
+          "MANUAL-PRS-02",
+          "MANUAL-PRS-02",
+          "INC-2026-002",
+          "INC-2026-002"
+        ],
+        "first_hit_rank": 2,
+        "top_citation": "INC-2026-002 \u00a71 (rev A, 2026-02-18)"
+      },
+      "Q14": {
+        "retrieved_doc_ids": [
+          "INC-2026-004",
+          "SPEC-WELD-06",
+          "SPEC-WELD-06",
+          "MANUAL-WELD-06",
+          "SPEC-ROB-03"
+        ],
+        "first_hit_rank": 4,
+        "top_citation": "INC-2026-004 (rev A, 2026-02-05)"
+      },
+      "Q15": {
+        "retrieved_doc_ids": [
+          "SPEC-LASER-02",
+          "MANUAL-LASER-02",
+          "INC-2026-005",
+          "SPEC-LASER-02",
+          "MANUAL-ASM-01"
+        ],
+        "first_hit_rank": 2,
+        "top_citation": "SPEC-LASER-02 \u00a73 (rev A, 2025-03-30)"
+      },
+      "Q16": {
+        "retrieved_doc_ids": [
+          "MANUAL-DRLL-08",
+          "MANUAL-CNC-12",
+          "MANUAL-ASM-01",
+          "SPEC-CNC-12",
+          "MANUAL-DRLL-08"
+        ],
+        "first_hit_rank": 1,
+        "top_citation": "MANUAL-DRLL-08 \u00a74 (rev A, 2025-01-09)"
+      },
+      "Q17": {
+        "retrieved_doc_ids": [
+          "MANUAL-GRND-03",
+          "SPEC-GRND-03",
+          "MANUAL-DRLL-08",
+          "MANUAL-GRND-03",
+          "MANUAL-ASM-01"
+        ],
+        "first_hit_rank": 1,
+        "top_citation": "MANUAL-GRND-03 \u00a74 (rev B, 2024-10-16)"
+      },
+      "Q18": {
+        "retrieved_doc_ids": [
+          "MANUAL-DRLL-08",
+          "MANUAL-PRS-02",
+          "MANUAL-LASER-02",
+          "MANUAL-WASH-01",
+          "INC-2026-002"
+        ],
+        "first_hit_rank": null,
+        "top_citation": "MANUAL-DRLL-08 \u00a72 (rev A, 2025-01-09)"
+      },
+      "Q19": {
+        "retrieved_doc_ids": [
+          "INC-2026-001",
+          "INC-2026-001",
+          "SPEC-CNC-07",
+          "MANUAL-CNC-12",
+          "SPEC-PRS-02"
+        ],
+        "first_hit_rank": 1,
+        "top_citation": "INC-2026-001 \u00a71 (rev A, 2026-03-01)"
+      },
+      "Q20": {
+        "retrieved_doc_ids": [
+          "INC-2026-002",
+          "INC-2026-002",
+          "SPEC-PRS-02",
+          "MANUAL-PRS-02",
+          "MANUAL-PRS-02"
+        ],
+        "first_hit_rank": 1,
+        "top_citation": "INC-2026-002 \u00a71 (rev A, 2026-02-18)"
+      },
+      "Q21": {
+        "retrieved_doc_ids": [
+          "QC-WI-005",
+          "QC-WI-005",
+          "INC-2026-003",
+          "INC-2026-003",
+          "INC-2026-003"
+        ],
+        "first_hit_rank": 3,
+        "top_citation": "QC-WI-005 (rev D, 2025-09-20)"
+      },
+      "Q22": {
+        "retrieved_doc_ids": [
+          "INC-2026-004",
+          "INC-2026-004",
+          "INC-2026-004",
+          "INC-2026-004",
+          "SPEC-WELD-06"
+        ],
+        "first_hit_rank": 1,
+        "top_citation": "INC-2026-004 \u00a72 (rev A, 2026-02-05)"
+      },
+      "Q23": {
+        "retrieved_doc_ids": [
+          "INC-2026-008",
+          "INC-2026-003",
+          "INC-2026-008",
+          "INC-2026-008",
+          "QC-WI-005"
+        ],
+        "first_hit_rank": 1,
+        "top_citation": "INC-2026-008 \u00a71 (rev A, 2026-03-20)"
+      },
+      "Q24": {
+        "retrieved_doc_ids": [
+          "MANUAL-CNC-07",
+          "INC-2026-001",
+          "MANUAL-CNC-12",
+          "MANUAL-DRLL-08",
+          "MANUAL-LASER-02"
+        ],
+        "first_hit_rank": 1,
+        "top_citation": "MANUAL-CNC-07 \u00a73 (rev C, 2025-06-15)"
+      },
+      "Q25": {
+        "retrieved_doc_ids": [
+          "INC-2026-006",
+          "INC-2026-006",
+          "INC-2026-006",
+          "INC-2026-006",
+          "MANUAL-CONV-05"
+        ],
+        "first_hit_rank": 1,
+        "top_citation": "INC-2026-006 \u00a71 (rev A, 2026-01-15)"
+      },
+      "Q26": {
+        "retrieved_doc_ids": [
+          "INC-2026-005",
+          "INC-2026-002",
+          "INC-2026-005",
+          "INC-2026-005",
+          "MANUAL-LASER-02"
+        ],
+        "first_hit_rank": 1,
+        "top_citation": "INC-2026-005 \u00a72 (rev A, 2026-03-11)"
+      },
+      "Q27": {
+        "retrieved_doc_ids": [
+          "INC-2026-007",
+          "INC-2026-007",
+          "INC-2026-007",
+          "INC-2026-007",
+          "MANUAL-GRND-03"
+        ],
+        "first_hit_rank": 1,
+        "top_citation": "INC-2026-007 \u00a71 (rev A, 2026-02-27)"
+      },
+      "Q28": {
+        "retrieved_doc_ids": [
+          "QC-WI-007",
+          "MANUAL-ASM-01",
+          "QC-WI-007",
+          "MANUAL-CMM-04",
+          "MANUAL-CNC-12"
+        ],
+        "first_hit_rank": 1,
+        "top_citation": "QC-WI-007 (rev C, 2025-07-08)"
+      },
+      "Q29": {
+        "retrieved_doc_ids": [
+          "QC-WI-007",
+          "QC-WI-007",
+          "MANUAL-ASM-01",
+          "MANUAL-ASM-01",
+          "MANUAL-ASM-01"
+        ],
+        "first_hit_rank": 1,
+        "top_citation": "QC-WI-007 \u00a71 (rev C, 2025-07-08)"
+      },
+      "Q30": {
+        "retrieved_doc_ids": [
+          "MANUAL-CMM-04",
+          "MANUAL-WELD-06",
+          "MANUAL-ASM-01",
+          "MANUAL-ROB-03",
+          "MANUAL-LASER-02"
+        ],
+        "first_hit_rank": 1,
+        "top_citation": "MANUAL-CMM-04 \u00a73 (rev C, 2025-08-01)"
+      }
+    }
+  }
+}

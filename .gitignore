@@ -31,6 +31,7 @@ ENV/
 models/
 .cache/
 *.faiss
+artifacts/
 
 # ---- Recordings (large binaries; keep docs/, results/, data/ tracked) ----
 recordings/*.mp4
