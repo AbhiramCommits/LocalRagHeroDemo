@@ -36,8 +36,8 @@ from .retrieve import Hit, HybridRetriever, load_retriever
 ASSET_RE = re.compile(r"\b([A-Z]{2,5}-\d{2})\b")
 _TOKEN_RE = re.compile(r"[a-z0-9]+")
 _UNIT_RE = re.compile(
-    r"(\d+(?:[.,]\d+)?)\s*"
-    r"(N·m|N\.m|n·m|kN|PSI|psi|mm|µm|um|°C|C|RPM|rpm|%|h|hr|hours?|days?|CFH|Hz|m/s|µS/cm|L|kg|ton|A|V|W)"
+    r"(\d+(?:[.,]\d+)?)\s*(?:\|\s*)?"
+    r"(N·m|N\.m|n·m|kN|N\b|PSI|psi|mm|µm|um|°C|RPM|rpm|%|h\b|hr|hours?|days?|CFH|Hz|m/s|ms|µS/cm|L|kg|ton|A|V|W)"
 )
 REFUSAL = "INSUFFICIENT_EVIDENCE"
 

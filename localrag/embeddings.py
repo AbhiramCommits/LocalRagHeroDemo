@@ -57,8 +57,8 @@ class Embedder:
         self.dim = 0
         self.load_error: str | None = None
         self._model = None
-        self._cache: dict[str, np.ndarray] = self._load_cache()
         self._init_model()
+        self._cache: dict[str, np.ndarray] = self._load_cache()
 
     # ------------------------------------------------------------------ #
     def _init_model(self) -> None:
@@ -91,7 +91,14 @@ class Embedder:
             with np.load(self.cache_path, allow_pickle=False) as data:
                 keys = [str(k) for k in data["keys"]]
                 vecs = data["vectors"]
-            return {k: vecs[i] for i, k in enumerate(keys)}
+            # Only keep entries whose dimension matches this embedder, so a cache
+            # written by one backend (e.g. MiniLM-384) never contaminates another
+            # (e.g. the hashing fallback-512).
+            return {
+                k: vecs[i]
+                for i, k in enumerate(keys)
+                if vecs[i].shape[0] == self.dim
+            }
         except Exception:
             return {}
 
