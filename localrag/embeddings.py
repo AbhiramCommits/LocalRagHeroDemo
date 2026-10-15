@@ -62,6 +62,12 @@ class Embedder:
 
     # ------------------------------------------------------------------ #
     def _init_model(self) -> None:
+        if not self.allow_download:
+            self._model = None
+            self.load_error = "downloads disabled (allow_download=False)"
+            self.dim = HASH_DIM
+            self.backend = "hashing_fallback"
+            return
         try:
             from sentence_transformers import SentenceTransformer
 
@@ -97,7 +103,7 @@ class Embedder:
         np.savez(self.cache_path, keys=np.array(keys), vectors=vectors)
 
     def _key(self, text: str) -> str:
-        return hashlib.sha1(f"{self.model_name}|{text}".encode("utf-8")).hexdigest()
+        return hashlib.sha1(f"{self.model_name}|{text}".encode()).hexdigest()
 
     # ------------------------------------------------------------------ #
     def _embed_hashing(self, texts: list[str]) -> np.ndarray:

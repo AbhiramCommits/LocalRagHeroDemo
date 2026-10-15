@@ -23,7 +23,7 @@ device: auto
 
 # Agent
 max_tool_calls: 4
-max_new_tokens: 320
+max_new_tokens: 192
 temperature: 0.0
 seed: 0
 
@@ -33,3 +33,4 @@ gold_path: data/gold/questions.jsonl
 index_dir: artifacts/index
 cache_dir: .cache
 results_dir: results
+allow_download: true

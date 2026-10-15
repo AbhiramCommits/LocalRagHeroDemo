@@ -51,10 +51,11 @@ class Settings:
     results_dir: str = "results"
 
     api_key: str = ""
+    allow_download: bool = True
 
     # ------------------------------------------------------------------ #
     @classmethod
-    def load(cls, config_path: str | Path | None = None, **overrides: object) -> "Settings":
+    def load(cls, config_path: str | Path | None = None, **overrides: object) -> Settings:
         """Build settings from YAML + environment + explicit overrides."""
         raw: dict[str, object] = {}
         path = Path(config_path) if config_path else DEFAULT_CONFIG
@@ -81,7 +82,13 @@ class Settings:
                 continue
             value = merged[f.name]
             default = f.default
-            if isinstance(default, int) and not isinstance(default, bool):
+            if isinstance(default, bool):
+                value = (
+                    value
+                    if isinstance(value, bool)
+                    else str(value).strip().lower() in {"1", "true", "yes", "on"}
+                )
+            elif isinstance(default, int) and not isinstance(default, bool):
                 value = int(value)  # type: ignore[arg-type]
             elif isinstance(default, float):
                 value = float(value)  # type: ignore[arg-type]

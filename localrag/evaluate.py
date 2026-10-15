@@ -6,7 +6,7 @@ import json
 import re
 import statistics
 import time
-from datetime import datetime, timezone
+from datetime import UTC, datetime
 from pathlib import Path
 
 from .config import Settings, load_settings
@@ -24,6 +24,7 @@ def _normalize(text: str) -> str:
     for ch in _DOTS:
         text = text.replace(ch, ".")
     text = text.replace("\u00a0", " ").replace("\u202f", " ")
+    text = text.replace("|", " ")
     # remove the space inside grouped numbers ("1 450" -> "1450")
     text = re.sub(r"(?<=\d)[ ](?=\d)", "", text)
     text = re.sub(r"\s+", " ", text)
@@ -94,7 +95,7 @@ def eval_retrieval(
     )
 
     report = {
-        "generated_utc": datetime.now(timezone.utc).isoformat(timespec="seconds"),
+        "generated_utc": datetime.now(UTC).isoformat(timespec="seconds"),
         "k_values": list(k_values),
         "n_questions_total": len(questions),
         "n_questions_scored": len(scored),
@@ -117,6 +118,175 @@ def _percentile(values: list[float], pct: float) -> float:
     s = sorted(values)
     idx = min(len(s) - 1, int(round((pct / 100.0) * (len(s) - 1))))
     return s[idx]
+
+
+# --------------------------------------------------------------------------- #
+# Agent evaluation                                                            #
+# --------------------------------------------------------------------------- #
+_DOC_ID_RE = re.compile(r"\b((?:MANUAL|SPEC|QC-WI|INC)-[A-Z0-9-]+)\b")
+
+
+def _citation_doc_ids(citations: list[str]) -> list[str]:
+    ids: list[str] = []
+    for c in citations:
+        m = _DOC_ID_RE.search(c)
+        if m:
+            ids.append(m.group(1))
+    return ids
+
+
+def score_result(result, q: dict) -> dict:
+    """Score one :class:`AgentResult` against one gold question."""
+    answer = _normalize(getattr(result, "answer", ""))
+    substrings = q.get("expected_answer_substrings", [])
+    matched = [s for s in substrings if _normalize(s) in answer]
+    substring_match = (len(matched) / len(substrings)) if substrings else None
+
+    expected_docs = set(q.get("expected_doc_ids", []))
+    cited_docs = _citation_doc_ids(list(getattr(result, "citations", [])))
+    cited_set = set(cited_docs)
+    if expected_docs:
+        precision = (len(cited_set & expected_docs) / len(cited_set)) if cited_set else 0.0
+    else:
+        precision = 1.0 if not cited_set else 0.0
+
+    used_tools = [c.tool for c in getattr(result, "tool_calls", [])]
+    expected_tools = q.get("expected_tools", [])
+    coverage = (
+        len(set(expected_tools) & set(used_tools)) / len(set(expected_tools))
+        if expected_tools
+        else None
+    )
+    refused = bool(getattr(result, "refused", False))
+    refusal_correct = (1.0 if refused else 0.0) if q["category"] == "refusal" else None
+
+    return {
+        "substring_match": substring_match,
+        "citation_precision": precision,
+        "tool_coverage": coverage,
+        "refusal_correct": refusal_correct,
+        "n_tool_calls": len(used_tools),
+        "latency_s": getattr(result, "latency_s", None),
+        "refused": refused,
+        "cited_doc_ids": cited_docs,
+        "answer": getattr(result, "answer", ""),
+    }
+
+
+def _aggregate(rows: list[dict]) -> dict:
+    def mean_of(key: str) -> float | None:
+        vals = [r[key] for r in rows if r.get(key) is not None]
+        return round(statistics.fmean(vals), 4) if vals else None
+
+    return {
+        "answer_substring_match": mean_of("substring_match"),
+        "citation_precision": mean_of("citation_precision"),
+        "expected_tool_coverage": mean_of("tool_coverage"),
+        "mean_tool_calls": round(
+            statistics.fmean([r["n_tool_calls"] for r in rows]), 4
+        ) if rows else None,
+        "mean_latency_s": round(
+            statistics.fmean([r["latency_s"] for r in rows if r["latency_s"] is not None]), 4
+        ) if rows else None,
+        "n_questions": len(rows),
+    }
+
+
+def eval_agent(
+    agent,
+    naive,
+    questions: list[dict],
+    settings: Settings | None = None,
+    progress: bool = False,
+) -> dict:
+    """Run the agentic agent and the naive baseline over the gold set."""
+    settings = settings or load_settings()
+    per_q: dict[str, dict] = {"agentic": {}, "naive": {}}
+    rows: dict[str, list[dict]] = {"agentic": [], "naive": []}
+    cat_rows: dict[str, dict[str, list[dict]]] = {"agentic": {}, "naive": {}}
+
+    for i, q in enumerate(questions):
+        for mode, runner in (("agentic", agent), ("naive", naive)):
+            if runner is None:
+                continue
+            result = runner.run(q["question"])
+            scored = score_result(result, q)
+            per_q[mode][q["id"]] = scored
+            rows[mode].append(scored)
+            cat_rows[mode].setdefault(q["category"], []).append(scored)
+        if progress:
+            print(f"  [{i + 1}/{len(questions)}] {q['id']} done")
+
+    block: dict[str, object] = {
+        "backend": getattr(agent, "backend_name", ""),
+        "device": getattr(agent, "device", ""),
+    }
+    for mode in ("agentic", "naive"):
+        if not rows[mode]:
+            continue
+        refusal_rows = [r for r in rows[mode] if r["refusal_correct"] is not None]
+        block[mode] = {
+            "overall": _aggregate(rows[mode]),
+            "by_category": {cat: _aggregate(rs) for cat, rs in sorted(cat_rows[mode].items())},
+            "correct_refusal_rate": (
+                round(statistics.fmean([r["refusal_correct"] for r in refusal_rows]), 4)
+                if refusal_rows
+                else None
+            ),
+            "per_question": per_q[mode],
+        }
+    return block
+
+
+def write_agent_markdown(report: dict, out: str | Path = "results/agent_eval.md") -> Path:
+    """Render the agentic-vs-naive comparison as Markdown."""
+    path = Path(out)
+    path.parent.mkdir(parents=True, exist_ok=True)
+    lines = [
+        "# Agent evaluation — agentic vs naive RAG",
+        "",
+        f"- Generated: `{report.get('generated_utc')}`",
+        f"- Gold questions: **{report.get('n_questions')}**",
+        "",
+    ]
+    for backend, block in report.get("backends", {}).items():
+        lines.append(f"## Backend `{backend}` (device `{block.get('device')}`)")
+        lines.append("")
+        lines.append(
+            "| Mode | Answer substring match | Citation precision | Expected-tool coverage | "
+            "Correct refusal | Mean tool calls | Mean latency (s) |"
+        )
+        lines.append("| --- | --- | --- | --- | --- | --- | --- |")
+
+        def _fmt(v, pct=False):
+            if v is None:
+                return "n/a"
+            return f"{v:.3f}"
+
+        for mode in ("agentic", "naive"):
+            m = block.get(mode)
+            if not m:
+                continue
+            o = m["overall"]
+            lines.append(
+                f"| {mode} | {_fmt(o['answer_substring_match'])} | {_fmt(o['citation_precision'])} | "
+                f"{_fmt(o['expected_tool_coverage'])} | {_fmt(m.get('correct_refusal_rate'))} | "
+                f"{_fmt(o['mean_tool_calls'])} | {_fmt(o['mean_latency_s'])} |"
+            )
+        lines.append("")
+        lines.append("Per category (agentic):")
+        lines.append("")
+        lines.append("| Category | n | Answer match | Citation precision | Mean tool calls | Mean latency (s) |")
+        lines.append("| --- | --- | --- | --- | --- | --- |")
+        for cat, m in (block.get("agentic") or {}).get("by_category", {}).items():
+            lines.append(
+                f"| {cat} | {m['n_questions']} | {_fmt(m['answer_substring_match'])} | "
+                f"{_fmt(m['citation_precision'])} | {_fmt(m['mean_tool_calls'])} | "
+                f"{_fmt(m['mean_latency_s'])} |"
+            )
+        lines.append("")
+    path.write_text("\n".join(lines) + "\n", encoding="utf-8")
+    return path
 
 
 def write_retrieval_markdown(

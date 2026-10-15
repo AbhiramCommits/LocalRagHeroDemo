@@ -218,6 +218,9 @@ def load_retriever(
     settings = settings or load_settings()
     index = VectorIndex.load(index_dir)
     embedder = Embedder(
-        model_name=settings.embedding_model, device=settings.device, cache_dir=settings.path("cache_dir")
+        model_name=settings.embedding_model,
+        device=settings.device,
+        cache_dir=settings.path("cache_dir"),
+        allow_download=settings.allow_download,
     )
     return HybridRetriever(index, embedder, settings)

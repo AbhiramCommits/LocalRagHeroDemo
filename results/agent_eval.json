@@ -1,0 +1,2059 @@
+{
+  "generated_utc": "2026-10-15T07:45:11+00:00",
+  "n_questions": 35,
+  "backends": {
+    "transformers": {
+      "backend": "transformers",
+      "device": "cpu",
+      "agentic": {
+        "overall": {
+          "answer_substring_match": 0.7,
+          "citation_precision": 0.5714,
+          "expected_tool_coverage": 0.9857,
+          "mean_tool_calls": 3.3429,
+          "mean_latency_s": 11.9937,
+          "n_questions": 35
+        },
+        "by_category": {
+          "lookup": {
+            "answer_substring_match": 0.4,
+            "citation_precision": 0.45,
+            "expected_tool_coverage": 1.0,
+            "mean_tool_calls": 3.0,
+            "mean_latency_s": 14.8292,
+            "n_questions": 10
+          },
+          "multi_hop": {
+            "answer_substring_match": 1.0,
+            "citation_precision": 0.7143,
+            "expected_tool_coverage": 1.0,
+            "mean_tool_calls": 3.2857,
+            "mean_latency_s": 7.9385,
+            "n_questions": 7
+          },
+          "numeric": {
+            "answer_substring_match": 0.75,
+            "citation_precision": 0.125,
+            "expected_tool_coverage": 1.0,
+            "mean_tool_calls": 4.0,
+            "mean_latency_s": 13.0593,
+            "n_questions": 8
+          },
+          "refusal": {
+            "answer_substring_match": null,
+            "citation_precision": 1.0,
+            "expected_tool_coverage": 1.0,
+            "mean_tool_calls": 3.0,
+            "mean_latency_s": 8.6416,
+            "n_questions": 5
+          },
+          "supersede": {
+            "answer_substring_match": 0.8,
+            "citation_precision": 0.9,
+            "expected_tool_coverage": 0.9,
+            "mean_tool_calls": 3.4,
+            "mean_latency_s": 13.6471,
+            "n_questions": 5
+          }
+        },
+        "correct_refusal_rate": 1.0,
+        "per_question": {
+          "Q01": {
+            "substring_match": 0.0,
+            "citation_precision": 0.0,
+            "tool_coverage": 1.0,
+            "refusal_correct": null,
+            "n_tool_calls": 2,
+            "latency_s": 10.4713,
+            "refused": false,
+            "cited_doc_ids": [
+              "MANUAL-CMM-04"
+            ],
+            "answer": "Fault code E-214 means that there is an issue with the front spindle bearing, which may be causing the spindle to overheat or slip. This could lead to damage to the spindle and other components if left unaddressed."
+          },
+          "Q02": {
+            "substring_match": 0.0,
+            "citation_precision": 0.0,
+            "tool_coverage": 1.0,
+            "refusal_correct": null,
+            "n_tool_calls": 4,
+            "latency_s": 13.076,
+            "refused": false,
+            "cited_doc_ids": [
+              "QC-WI-002"
+            ],
+            "answer": "The daily PM coolant check for the CNC-07 is performed using the refractionometer. The citation for this information is (QC-WI-002 \u00a71 (rev C, 2025-06-10))."
+          },
+          "Q03": {
+            "substring_match": 0.0,
+            "citation_precision": 0.0,
+            "tool_coverage": 1.0,
+            "refusal_correct": null,
+            "n_tool_calls": 4,
+            "latency_s": 14.8048,
+            "refused": false,
+            "cited_doc_ids": [
+              "INC-2026-001"
+            ],
+            "answer": "Before removing a way cover on the CNC-07, the safety step that must be taken is to ensure the way cover is properly isolated from the machine before proceeding. This can be achieved by isolating the conveyor at the local disconnect before removing a belt section. The citation for this information is [Manual-CNC-07 \u00a71 (rev C, 2025-06-15)]."
+          },
+          "Q04": {
+            "substring_match": 1.0,
+            "citation_precision": 1.0,
+            "tool_coverage": 1.0,
+            "refusal_correct": null,
+            "n_tool_calls": 1,
+            "latency_s": 15.8408,
+            "refused": false,
+            "cited_doc_ids": [
+              "QC-WI-005"
+            ],
+            "answer": "The inspection interval for the hole-position tolerance check is every 25 parts. This information can be found in QC-WI-005 \u00a71 (rev D, 2025-09-20)."
+          },
+          "Q05": {
+            "substring_match": 0.0,
+            "citation_precision": 1.0,
+            "tool_coverage": 1.0,
+            "refusal_correct": null,
+            "n_tool_calls": 2,
+            "latency_s": 20.0527,
+            "refused": false,
+            "cited_doc_ids": [
+              "QC-WI-001"
+            ],
+            "answer": "Incoming raw-material verification (ALM) is covered by QC-WI-001 \u00a73 (rev B, 2025-05-01). The citation for this work instruction is QC-WI-001 \u00a73 (rev B, 2025-05-01)."
+          },
+          "Q06": {
+            "substring_match": 0.0,
+            "citation_precision": 0.0,
+            "tool_coverage": 1.0,
+            "refusal_correct": null,
+            "n_tool_calls": 4,
+            "latency_s": 20.0873,
+            "refused": false,
+            "cited_doc_ids": [
+              "INC-2026-002"
+            ],
+            "answer": "Fault code E-318 indicates an intermittent E-318 trip during rapid approach on the PRS-02 press."
+          },
+          "Q07": {
+            "substring_match": 0.0,
+            "citation_precision": 0.5,
+            "tool_coverage": 1.0,
+            "refusal_correct": null,
+            "n_tool_calls": 4,
+            "latency_s": 20.9945,
+            "refused": false,
+            "cited_doc_ids": [
+              "SPEC-CNC-07",
+              "SPEC-CNC-12"
+            ],
+            "answer": "The maximum spindle speed of the CNC-07 is 15,000 RPM. This information can be found in the SPEC-CNC-07 section under the \"Max spindle speed\" parameter. The citation for this information is (SPEC-CNC-07 \u00a71).\n\nIn the same specification, the maximum spindle speed is also mentioned as 4,500 RPM. This information can be found in the SPEC-CNC-12 section under the \"Max spindle speed\" parameter. The citation for this information is (SPEC-CNC-12 \u00a71)."
+          },
+          "Q08": {
+            "substring_match": 1.0,
+            "citation_precision": 1.0,
+            "tool_coverage": 1.0,
+            "refusal_correct": null,
+            "n_tool_calls": 1,
+            "latency_s": 11.652,
+            "refused": false,
+            "cited_doc_ids": [
+              "QC-WI-009"
+            ],
+            "answer": "The coolant concentration requirement for QC-WI-009 is 6\u20138% and the pH requirement is between 8.5 and 9.5. The inspection interval is daily. The QC-WI-009 \u00a71 requires drawing a sample and reading the concentration with a refractometer, while QC-WI-009 \u00a72 involves measuring the pH with a calibrated meter."
+          },
+          "Q09": {
+            "substring_match": 1.0,
+            "citation_precision": 1.0,
+            "tool_coverage": 1.0,
+            "refusal_correct": null,
+            "n_tool_calls": 4,
+            "latency_s": 10.6084,
+            "refused": false,
+            "cited_doc_ids": [
+              "SPEC-ROB-03"
+            ],
+            "answer": "The payload of the ROB-03 material-handling robot is 20 kg. This information can be found in the SPEC-ROB-03 section of the manual."
+          },
+          "Q10": {
+            "substring_match": 1.0,
+            "citation_precision": 0.0,
+            "tool_coverage": 1.0,
+            "refusal_correct": null,
+            "n_tool_calls": 4,
+            "latency_s": 10.7038,
+            "refused": false,
+            "cited_doc_ids": [
+              "INC-2026-004"
+            ],
+            "answer": "The fault code listed in the WELD-06 maintenance manual is E-815, which indicates a weld wire-feed fault where the wire slip exceeds 5% of the commanded speed."
+          },
+          "Q11": {
+            "substring_match": 0.0,
+            "citation_precision": 0.0,
+            "tool_coverage": 1.0,
+            "refusal_correct": null,
+            "n_tool_calls": 4,
+            "latency_s": 12.5561,
+            "refused": false,
+            "cited_doc_ids": [
+              "INC-2026-001"
+            ],
+            "answer": "The torque required to apply the new value of 52 N\u00b7m to the CNC-12 turret clamp bolts should be 52 N\u00b7m. This can be verified from the information provided in the manual, which states that the previous value was 45 N\u00b7m and the new value is 52 N\u00b7m."
+          },
+          "Q12": {
+            "substring_match": 1.0,
+            "citation_precision": 0.0,
+            "tool_coverage": 1.0,
+            "refusal_correct": null,
+            "n_tool_calls": 4,
+            "latency_s": 12.8104,
+            "refused": false,
+            "cited_doc_ids": [
+              "INC-2026-001"
+            ],
+            "answer": "The drawbar force specification for the CNC-07 is 12 kN."
+          },
+          "Q13": {
+            "substring_match": 1.0,
+            "citation_precision": 0.0,
+            "tool_coverage": 1.0,
+            "refusal_correct": null,
+            "n_tool_calls": 4,
+            "latency_s": 15.551,
+            "refused": false,
+            "cited_doc_ids": [
+              "INC-2026-002"
+            ],
+            "answer": "The hydraulic accumulator pre-charge requirement for the PRS-02 is 1 450 PSI. This can be confirmed by referencing manual section 3 (rev A, 2026-02-18), which states \"Check pre-charge at 1 450 PSI, \u00b130 PSI.\""
+          },
+          "Q14": {
+            "substring_match": 1.0,
+            "citation_precision": 0.0,
+            "tool_coverage": 1.0,
+            "refusal_correct": null,
+            "n_tool_calls": 4,
+            "latency_s": 11.0217,
+            "refused": false,
+            "cited_doc_ids": [
+              "QC-WI-006"
+            ],
+            "answer": "The specification for the WELD-06 torch collar indicates that it should be set to 6 N\u00b7m. The citation for this information is (QC-WI-006 \u00a71, rev B, 2025-04-18)."
+          },
+          "Q15": {
+            "substring_match": 1.0,
+            "citation_precision": 1.0,
+            "tool_coverage": 1.0,
+            "refusal_correct": null,
+            "n_tool_calls": 4,
+            "latency_s": 10.6416,
+            "refused": false,
+            "cited_doc_ids": [
+              "MANUAL-LASER-02"
+            ],
+            "answer": "The lens cassette screw torque on the LASER-02 is 3 N\u00b7m. The citation is MANUAL-LASER-02 \u00a71 (rev B, 2025-05-22)."
+          },
+          "Q16": {
+            "substring_match": 1.0,
+            "citation_precision": 0.0,
+            "tool_coverage": 1.0,
+            "refusal_correct": null,
+            "n_tool_calls": 4,
+            "latency_s": 10.7221,
+            "refused": false,
+            "cited_doc_ids": [
+              "MANUAL-ASM-01"
+            ],
+            "answer": "The collet nut torque for the DRLL-08 drill/tap station is 55 N\u00b7m. This information can be found in manual section 1, which states \"Collet nut\" under the \"Fastener / setting\" category."
+          },
+          "Q17": {
+            "substring_match": 0.0,
+            "citation_precision": 0.0,
+            "tool_coverage": 1.0,
+            "refusal_correct": null,
+            "n_tool_calls": 4,
+            "latency_s": 17.0601,
+            "refused": false,
+            "cited_doc_ids": [
+              "INC-2026-007"
+            ],
+            "answer": "The torque for the wheel arbor nut on the GRND-03 grinder is 55 N\u00b7m. This information can be found in manual section 1 of INC-2026-007 \u00a71 (rev A, 2026-02-27)."
+          },
+          "Q18": {
+            "substring_match": 1.0,
+            "citation_precision": 0.0,
+            "tool_coverage": 1.0,
+            "refusal_correct": null,
+            "n_tool_calls": 4,
+            "latency_s": 14.1117,
+            "refused": false,
+            "cited_doc_ids": [
+              "MANUAL-WASH-01"
+            ],
+            "answer": "The air supply pressure requirement at the CNC-07 FRL unit is between 90\u2013110 PSI. This information can be found in the MANUAL-WASH-01 section under the \"Code\" tab, specifically under the \"Meaning\" row. The citation for this information is (MANUAL-WASH-01 \u00a73)."
+          },
+          "Q19": {
+            "substring_match": 1.0,
+            "citation_precision": 1.0,
+            "tool_coverage": 1.0,
+            "refusal_correct": null,
+            "n_tool_calls": 4,
+            "latency_s": 12.9768,
+            "refused": false,
+            "cited_doc_ids": [
+              "INC-2026-001"
+            ],
+            "answer": "The current torque specification for the CNC-07 spindle clamp bolts is 52 N\u00b7m. This information can be found in the manual section titled \"Spindle Clamp Bolts\" under Revision A, which states that the previous value was 45 N\u00b7m and the new value is now 52 N\u00b7m."
+          },
+          "Q20": {
+            "substring_match": 1.0,
+            "citation_precision": 1.0,
+            "tool_coverage": 1.0,
+            "refusal_correct": null,
+            "n_tool_calls": 4,
+            "latency_s": 12.1494,
+            "refused": false,
+            "cited_doc_ids": [
+              "INC-2026-002"
+            ],
+            "answer": "The current hydraulic relief pressure for the PRS-02 is 2750 PSI. This information can be found in manual section 4 of the incident note."
+          },
+          "Q21": {
+            "substring_match": 1.0,
+            "citation_precision": 0.5,
+            "tool_coverage": 0.5,
+            "refusal_correct": null,
+            "n_tool_calls": 1,
+            "latency_s": 17.442,
+            "refused": false,
+            "cited_doc_ids": [
+              "INC-2026-003",
+              "QC-WI-005"
+            ],
+            "answer": "The current hole-position tolerance in QC-WI-005 is 0.03 mm. This information was updated from the previous value of 0.05 mm in the previous incident note (INC-2026-003)."
+          },
+          "Q22": {
+            "substring_match": 0.0,
+            "citation_precision": 1.0,
+            "tool_coverage": 1.0,
+            "refusal_correct": null,
+            "n_tool_calls": 4,
+            "latency_s": 12.9484,
+            "refused": false,
+            "cited_doc_ids": [
+              "INC-2026-004"
+            ],
+            "answer": "The current wire-feed drive-roll tension on the WELD-06 is 8 N. This can be found in the previous value column of the table. The citation for this information is [INC-2026-004 \u00a72](https://www.alibaba.com/document/1000000000000000000?from=manual&docid=MANUAL-CNC-07 \u00a74)."
+          },
+          "Q23": {
+            "substring_match": 1.0,
+            "citation_precision": 1.0,
+            "tool_coverage": 1.0,
+            "refusal_correct": null,
+            "n_tool_calls": 4,
+            "latency_s": 12.7191,
+            "refused": false,
+            "cited_doc_ids": [
+              "INC-2026-008"
+            ],
+            "answer": "The current probe calibration interval for the CMM-04 is 60 days. This can be seen in the updated information provided in manual section 4 of INC-2026-008, which states \"Probe calibration interval is shortened from 90 days to 60 days after a drift event exceeded the 0.35 \u00b5m probe-repeatability budget.\""
+          },
+          "Q24": {
+            "substring_match": 1.0,
+            "citation_precision": 0.0,
+            "tool_coverage": 1.0,
+            "refusal_correct": null,
+            "n_tool_calls": 4,
+            "latency_s": 8.7783,
+            "refused": false,
+            "cited_doc_ids": [
+              "INC-2026-001"
+            ],
+            "answer": "The fault code that fires if the CNC-07 spindle front bearing exceeds its limit is E-214. The bearing temperature should not exceed 78\u00b0C."
+          },
+          "Q25": {
+            "substring_match": 1.0,
+            "citation_precision": 1.0,
+            "tool_coverage": 1.0,
+            "refusal_correct": null,
+            "n_tool_calls": 4,
+            "latency_s": 7.7296,
+            "refused": false,
+            "cited_doc_ids": [
+              "INC-2026-006"
+            ],
+            "answer": "The CONV-05 belt tension was superseded by the manual update on page 4. The new value for the belt tension is 58 N."
+          },
+          "Q26": {
+            "substring_match": 1.0,
+            "citation_precision": 1.0,
+            "tool_coverage": 1.0,
+            "refusal_correct": null,
+            "n_tool_calls": 4,
+            "latency_s": 10.0889,
+            "refused": false,
+            "cited_doc_ids": [
+              "MANUAL-LASER-02"
+            ],
+            "answer": "The current assist-gas pressure for LASER-02 is 210 PSI. The change occurred in MANUAL-LASER-02 \u00a71 (rev A, 2026-03-11), where it states \"Nitrogen assist-gas pressure is raised from 180 PSI to 210 PSI to improve dross-free cutting of 6 mm mild steel.\""
+          },
+          "Q27": {
+            "substring_match": 1.0,
+            "citation_precision": 1.0,
+            "tool_coverage": 1.0,
+            "refusal_correct": null,
+            "n_tool_calls": 4,
+            "latency_s": 7.5297,
+            "refused": false,
+            "cited_doc_ids": [
+              "MANUAL-GRND-03"
+            ],
+            "answer": "The difference between the MANUAL-GRND-03 wheel-dressing interval and the current requirement is that the new interval is 25 hours instead of 40 hours."
+          },
+          "Q28": {
+            "substring_match": 1.0,
+            "citation_precision": 0.0,
+            "tool_coverage": 1.0,
+            "refusal_correct": null,
+            "n_tool_calls": 1,
+            "latency_s": 6.713,
+            "refused": false,
+            "cited_doc_ids": [
+              "MANUAL-CMM-04"
+            ],
+            "answer": "The QA work instruction for verifying safety-critical fastener torque uses the value of 22 N\u00b7m from Manual-ASM-01 \u00a74 (rev A, 2025-07-03)."
+          },
+          "Q29": {
+            "substring_match": 1.0,
+            "citation_precision": 1.0,
+            "tool_coverage": 1.0,
+            "refusal_correct": null,
+            "n_tool_calls": 4,
+            "latency_s": 7.9466,
+            "refused": false,
+            "cited_doc_ids": [
+              "QC-WI-007"
+            ],
+            "answer": "The torque required for the ASM-01 M8 safety-critical fasteners is 22 N\u00b7m. The QC-WI-007 \u00a72 (rev C, 2025-07-08) states that the driver should be within \u00b15% of 22 N\u00b7m and no audited joint loosening should occur during this process."
+          },
+          "Q30": {
+            "substring_match": 1.0,
+            "citation_precision": 1.0,
+            "tool_coverage": 1.0,
+            "refusal_correct": null,
+            "n_tool_calls": 2,
+            "latency_s": 6.7832,
+            "refused": false,
+            "cited_doc_ids": [
+              "MANUAL-CNC-12"
+            ],
+            "answer": "The asset manual that lists fault code E-512 is MANUAL-CNC-12. This manual indicates that the encoder communication loss fault code E-512 signifies a drive feedback timeout issue exceeding 50 milliseconds."
+          },
+          "Q31": {
+            "substring_match": null,
+            "citation_precision": 1.0,
+            "tool_coverage": 1.0,
+            "refusal_correct": 1.0,
+            "n_tool_calls": 2,
+            "latency_s": 10.2985,
+            "refused": true,
+            "cited_doc_ids": [],
+            "answer": "INSUFFICIENT_EVIDENCE"
+          },
+          "Q32": {
+            "substring_match": null,
+            "citation_precision": 1.0,
+            "tool_coverage": 1.0,
+            "refusal_correct": 1.0,
+            "n_tool_calls": 1,
+            "latency_s": 6.137,
+            "refused": true,
+            "cited_doc_ids": [],
+            "answer": "INSUFFICIENT_EVIDENCE"
+          },
+          "Q33": {
+            "substring_match": null,
+            "citation_precision": 1.0,
+            "tool_coverage": 1.0,
+            "refusal_correct": 1.0,
+            "n_tool_calls": 4,
+            "latency_s": 9.4793,
+            "refused": true,
+            "cited_doc_ids": [],
+            "answer": "INSUFFICIENT_EVIDENCE"
+          },
+          "Q34": {
+            "substring_match": null,
+            "citation_precision": 1.0,
+            "tool_coverage": 1.0,
+            "refusal_correct": 1.0,
+            "n_tool_calls": 4,
+            "latency_s": 9.5297,
+            "refused": true,
+            "cited_doc_ids": [],
+            "answer": "INSUFFICIENT_EVIDENCE"
+          },
+          "Q35": {
+            "substring_match": null,
+            "citation_precision": 1.0,
+            "tool_coverage": 1.0,
+            "refusal_correct": 1.0,
+            "n_tool_calls": 4,
+            "latency_s": 7.7635,
+            "refused": true,
+            "cited_doc_ids": [],
+            "answer": "INSUFFICIENT_EVIDENCE"
+          }
+        }
+      },
+      "naive": {
+        "overall": {
+          "answer_substring_match": 0.7667,
+          "citation_precision": 0.4143,
+          "expected_tool_coverage": 0.0,
+          "mean_tool_calls": 0.0,
+          "mean_latency_s": 4.1044,
+          "n_questions": 35
+        },
+        "by_category": {
+          "lookup": {
+            "answer_substring_match": 0.5,
+            "citation_precision": 0.5,
+            "expected_tool_coverage": 0.0,
+            "mean_tool_calls": 0.0,
+            "mean_latency_s": 5.0106,
+            "n_questions": 10
+          },
+          "multi_hop": {
+            "answer_substring_match": 0.8571,
+            "citation_precision": 0.7143,
+            "expected_tool_coverage": 0.0,
+            "mean_tool_calls": 0.0,
+            "mean_latency_s": 2.8564,
+            "n_questions": 7
+          },
+          "numeric": {
+            "answer_substring_match": 0.875,
+            "citation_precision": 0.0,
+            "expected_tool_coverage": 0.0,
+            "mean_tool_calls": 0.0,
+            "mean_latency_s": 4.7527,
+            "n_questions": 8
+          },
+          "refusal": {
+            "answer_substring_match": null,
+            "citation_precision": 0.0,
+            "expected_tool_coverage": 0.0,
+            "mean_tool_calls": 0.0,
+            "mean_latency_s": 2.2944,
+            "n_questions": 5
+          },
+          "supersede": {
+            "answer_substring_match": 1.0,
+            "citation_precision": 0.9,
+            "expected_tool_coverage": 0.0,
+            "mean_tool_calls": 0.0,
+            "mean_latency_s": 4.8117,
+            "n_questions": 5
+          }
+        },
+        "correct_refusal_rate": 0.0,
+        "per_question": {
+          "Q01": {
+            "substring_match": 0.0,
+            "citation_precision": 0.0,
+            "tool_coverage": 0.0,
+            "refusal_correct": null,
+            "n_tool_calls": 0,
+            "latency_s": 5.569,
+            "refused": false,
+            "cited_doc_ids": [
+              "MANUAL-CMM-04"
+            ],
+            "answer": "Fault code E-214 means that the conveyor belt tracking system has detected an issue where the belt edge offset exceeds 15 millimeters. This could indicate a problem with the conveyor belt or its alignment. The cause may be due to misalignment between the conveyor belt and the track, worn belts, or other factors affecting the belt's movement."
+          },
+          "Q02": {
+            "substring_match": 0.0,
+            "citation_precision": 1.0,
+            "tool_coverage": 0.0,
+            "refusal_correct": null,
+            "n_tool_calls": 0,
+            "latency_s": 3.2294,
+            "refused": false,
+            "cited_doc_ids": [
+              "MANUAL-CNC-07"
+            ],
+            "answer": "The daily PM coolant check for the CNC-07 is to ensure that the coolant concentration is between 6% and 8%. The inspection should be performed every day to maintain optimal performance of the machine."
+          },
+          "Q03": {
+            "substring_match": 1.0,
+            "citation_precision": 0.0,
+            "tool_coverage": 0.0,
+            "refusal_correct": null,
+            "n_tool_calls": 0,
+            "latency_s": 7.0493,
+            "refused": false,
+            "cited_doc_ids": [
+              "INC-2026-001"
+            ],
+            "answer": "Before removing a way cover on the CNC-07, one must first lock out the 480 V main disconnect at MCC-4. This ensures that no electrical power is supplied to the CNC system during the removal process."
+          },
+          "Q04": {
+            "substring_match": 1.0,
+            "citation_precision": 1.0,
+            "tool_coverage": 0.0,
+            "refusal_correct": null,
+            "n_tool_calls": 0,
+            "latency_s": 4.4688,
+            "refused": false,
+            "cited_doc_ids": [
+              "QC-WI-005"
+            ],
+            "answer": "The inspection interval for the hole-position tolerance check is every 25 parts. This information can be found in QC-WI-005 \u00a71 (rev D, 2025-09-20)."
+          },
+          "Q05": {
+            "substring_match": 0.0,
+            "citation_precision": 0.0,
+            "tool_coverage": 0.0,
+            "refusal_correct": null,
+            "n_tool_calls": 0,
+            "latency_s": 5.3021,
+            "refused": false,
+            "cited_doc_ids": [
+              "QC-WI-003"
+            ],
+            "answer": "The work instruction that covers incoming raw-material verification is QC-WI-003 (rev A, 2025-02-12). This can be found in the manual (MANUAL-CNC-07 \u00a74)."
+          },
+          "Q06": {
+            "substring_match": 0.0,
+            "citation_precision": 0.0,
+            "tool_coverage": 0.0,
+            "refusal_correct": null,
+            "n_tool_calls": 0,
+            "latency_s": 4.6932,
+            "refused": false,
+            "cited_doc_ids": [
+              "INC-2026-002"
+            ],
+            "answer": "Fault code E-318 indicates that there is an issue with the hydraulic relief pressure on PRS-02. The hydraulic pressure should be maintained between 2500 and 2750 psi to prevent intermittent E-318 trips during rapid approaches."
+          },
+          "Q07": {
+            "substring_match": 0.0,
+            "citation_precision": 1.0,
+            "tool_coverage": 0.0,
+            "refusal_correct": null,
+            "n_tool_calls": 0,
+            "latency_s": 5.1288,
+            "refused": false,
+            "cited_doc_ids": [
+              "SPEC-CNC-07"
+            ],
+            "answer": "The maximum spindle speed of the CNC-07 is 4,500 RPM. This information can be found in SPEC-CNC-07 \u00a71 (rev B, 2025-04-02)."
+          },
+          "Q08": {
+            "substring_match": 1.0,
+            "citation_precision": 1.0,
+            "tool_coverage": 0.0,
+            "refusal_correct": null,
+            "n_tool_calls": 0,
+            "latency_s": 5.2532,
+            "refused": false,
+            "cited_doc_ids": [
+              "QC-WI-009"
+            ],
+            "answer": "The coolant concentration requirement for QC-WI-009 is 6\u20138% and the pH requirement is between 8.5 and 9.5. The inspection interval is daily. The QC-WI-009 \u00a71 requires drawing a sample and reading the concentration with a refractometer, while QC-WI-009 \u00a72 involves measuring the pH with a calibrated meter."
+          },
+          "Q09": {
+            "substring_match": 1.0,
+            "citation_precision": 1.0,
+            "tool_coverage": 0.0,
+            "refusal_correct": null,
+            "n_tool_calls": 0,
+            "latency_s": 4.505,
+            "refused": false,
+            "cited_doc_ids": [
+              "SPEC-ROB-03"
+            ],
+            "answer": "The payload of the ROB-03 material-handling robot is 20 kg. This information can be found in the SPEC-ROB-03 maintenance manual, which provides details about the model number NL-R20 (20 kg payload)."
+          },
+          "Q10": {
+            "substring_match": 1.0,
+            "citation_precision": 0.0,
+            "tool_coverage": 0.0,
+            "refusal_correct": null,
+            "n_tool_calls": 0,
+            "latency_s": 4.9076,
+            "refused": false,
+            "cited_doc_ids": [
+              "INC-2026-004"
+            ],
+            "answer": "The fault codes listed in the WELD-06 maintenance manual include:\n\n- E-815: Weld wire-feed fault - wire slip exceeds 5% of commanded speed.\n- E-604: E-stop circuit open - safety relay dropped out.\n- E-512: Encoder communication loss - drive feedback timeout above 50ms."
+          },
+          "Q11": {
+            "substring_match": 1.0,
+            "citation_precision": 0.0,
+            "tool_coverage": 0.0,
+            "refusal_correct": null,
+            "n_tool_calls": 0,
+            "latency_s": 3.86,
+            "refused": false,
+            "cited_doc_ids": [
+              "INC-2026-001"
+            ],
+            "answer": "The torque required to apply the CNC-12 turret clamp bolts should be 38 N\u00b7m. This can be found in Manual-CNC-12 \u00a74 (rev B, 2024-11-08)."
+          },
+          "Q12": {
+            "substring_match": 1.0,
+            "citation_precision": 0.0,
+            "tool_coverage": 0.0,
+            "refusal_correct": null,
+            "n_tool_calls": 0,
+            "latency_s": 5.0005,
+            "refused": false,
+            "cited_doc_ids": [
+              "SPEC-CNC-07"
+            ],
+            "answer": "The drawbar force specification for the CNC-07 is 12 kN. This information can be found in SPEC-CNC-07 \u00a73 (rev B, 2025-04-02)."
+          },
+          "Q13": {
+            "substring_match": 1.0,
+            "citation_precision": 0.0,
+            "tool_coverage": 0.0,
+            "refusal_correct": null,
+            "n_tool_calls": 0,
+            "latency_s": 4.5516,
+            "refused": false,
+            "cited_doc_ids": [
+              "INC-2026-002"
+            ],
+            "answer": "The hydraulic accumulator pre-charge requirement for the PRS-02 is 1 450 PSI, which is within the safe range of 3000 PSI."
+          },
+          "Q14": {
+            "substring_match": 1.0,
+            "citation_precision": 0.0,
+            "tool_coverage": 0.0,
+            "refusal_correct": null,
+            "n_tool_calls": 0,
+            "latency_s": 5.1888,
+            "refused": false,
+            "cited_doc_ids": [
+              "SPEC-WELD-06"
+            ],
+            "answer": "The specification for the WELD-06 torch collar indicates that it requires a torque of 6 N\u00b7m to be applied. This can be found in the SPEC-WELD-06 \u00a73 (rev A, 2025-02-14). The citation for this information is (SPEC-WELD-06 \u00a73 (rev A, 2025-02-14))."
+          },
+          "Q15": {
+            "substring_match": 1.0,
+            "citation_precision": 0.0,
+            "tool_coverage": 0.0,
+            "refusal_correct": null,
+            "n_tool_calls": 0,
+            "latency_s": 3.7719,
+            "refused": false,
+            "cited_doc_ids": [
+              "INC-2026-005"
+            ],
+            "answer": "The lens cassette screw torque for the LASER-02 is 3 N\u00b7m. This information can be found in Manual-LASER-02 \u00a74 (rev B, 2025-05-22)."
+          },
+          "Q16": {
+            "substring_match": 1.0,
+            "citation_precision": 0.0,
+            "tool_coverage": 0.0,
+            "refusal_correct": null,
+            "n_tool_calls": 0,
+            "latency_s": 5.6106,
+            "refused": false,
+            "cited_doc_ids": [
+              "MANUAL-ASM-01"
+            ],
+            "answer": "The collet nut torque for the DRLL-08 drill/tap station is 55 N\u00b7m. This value can be found in manual section 5 of the DRLL-08 Maintenance Manual."
+          },
+          "Q17": {
+            "substring_match": 1.0,
+            "citation_precision": 0.0,
+            "tool_coverage": 0.0,
+            "refusal_correct": null,
+            "n_tool_calls": 0,
+            "latency_s": 4.9143,
+            "refused": false,
+            "cited_doc_ids": [
+              "SPEC-GRND-03"
+            ],
+            "answer": "The wheel arbor nut torque for the GRND-03 grinder is 95 N\u00b7m. This information can be found in the manual section titled \"Setting\" under the \"Wheel arbor nut\" setting, which states \"95 N\u00b7m\". The citation for this information is (SPEC-GRND-03 \u00a73)."
+          },
+          "Q18": {
+            "substring_match": 0.0,
+            "citation_precision": 0.0,
+            "tool_coverage": 0.0,
+            "refusal_correct": null,
+            "n_tool_calls": 0,
+            "latency_s": 5.1241,
+            "refused": false,
+            "cited_doc_ids": [
+              "INC-2026-002"
+            ],
+            "answer": "The air-supply pressure range required at the CNC-07 FRL unit is between 90 and 110 PSI. This information can be found in Manual-DRLL-08 \u00a72 (rev A, 2025-01-09)."
+          },
+          "Q19": {
+            "substring_match": 1.0,
+            "citation_precision": 1.0,
+            "tool_coverage": 0.0,
+            "refusal_correct": null,
+            "n_tool_calls": 0,
+            "latency_s": 3.7299,
+            "refused": false,
+            "cited_doc_ids": [
+              "INC-2026-001"
+            ],
+            "answer": "The current torque specification for the CNC-07 spindle clamp bolts is 52 N\u00b7m. This information can be found in Manual-CNC-12 \u00a74 (rev B, 2024-11-08)."
+          },
+          "Q20": {
+            "substring_match": 1.0,
+            "citation_precision": 1.0,
+            "tool_coverage": 0.0,
+            "refusal_correct": null,
+            "n_tool_calls": 0,
+            "latency_s": 6.4186,
+            "refused": false,
+            "cited_doc_ids": [
+              "INC-2026-002"
+            ],
+            "answer": "The current hydraulic relief pressure for the PRS-02 is 2750 PSI. This information can be found in manual section 3 of the PRS-02 maintenance manual, which states: \"Hydraulic relief pressure\" is 2500 PSI."
+          },
+          "Q21": {
+            "substring_match": 1.0,
+            "citation_precision": 0.5,
+            "tool_coverage": 0.0,
+            "refusal_correct": null,
+            "n_tool_calls": 0,
+            "latency_s": 7.404,
+            "refused": false,
+            "cited_doc_ids": [
+              "INC-2026-003",
+              "QC-WI-005"
+            ],
+            "answer": "The current hole-position tolerance in QC-WI-005 is 0.03 mm. This information was updated from the previous value of 0.05 mm in the previous incident note (INC-2026-003)."
+          },
+          "Q22": {
+            "substring_match": 1.0,
+            "citation_precision": 1.0,
+            "tool_coverage": 0.0,
+            "refusal_correct": null,
+            "n_tool_calls": 0,
+            "latency_s": 3.3939,
+            "refused": false,
+            "cited_doc_ids": [
+              "INC-2026-004"
+            ],
+            "answer": "The current wire-feed drive-roll tension on the WELD-06 is 8 N. This information can be found in the manual (INC-2026-004) under the \"Previous value\" row, which shows an initial value of 8 N and a new value of 11 N after the incident noted in the previous update."
+          },
+          "Q23": {
+            "substring_match": 1.0,
+            "citation_precision": 1.0,
+            "tool_coverage": 0.0,
+            "refusal_correct": null,
+            "n_tool_calls": 0,
+            "latency_s": 3.1122,
+            "refused": false,
+            "cited_doc_ids": [
+              "INC-2026-008"
+            ],
+            "answer": "The current probe calibration interval for the CMM-04 is 60 days. This information can be found in the latest revision of the manual (INC-2026-008 \u00a72)."
+          },
+          "Q24": {
+            "substring_match": 1.0,
+            "citation_precision": 0.0,
+            "tool_coverage": 0.0,
+            "refusal_correct": null,
+            "n_tool_calls": 0,
+            "latency_s": 2.9903,
+            "refused": false,
+            "cited_doc_ids": [
+              "INC-2026-001"
+            ],
+            "answer": "The fault code that will fire if the CNC-07 spindle front bearing exceeds its limit is E-214. This fault code indicates that the front bearing has exceeded its maximum allowable temperature of 78\u00b0C. The temperature threshold for this fault code is 78\u00b0C."
+          },
+          "Q25": {
+            "substring_match": 1.0,
+            "citation_precision": 1.0,
+            "tool_coverage": 0.0,
+            "refusal_correct": null,
+            "n_tool_calls": 0,
+            "latency_s": 3.4428,
+            "refused": false,
+            "cited_doc_ids": [
+              "INC-2026-006"
+            ],
+            "answer": "The CONV-05 belt tension was superseded by INC-2026-006. According to INC-2026-006, the belt tension is now set at 58 N, which holds the belt within 5 mm of center over a full lap."
+          },
+          "Q26": {
+            "substring_match": 0.0,
+            "citation_precision": 1.0,
+            "tool_coverage": 0.0,
+            "refusal_correct": null,
+            "n_tool_calls": 0,
+            "latency_s": 2.3631,
+            "refused": false,
+            "cited_doc_ids": [
+              "INC-2026-005"
+            ],
+            "answer": "The current assist-gas pressure for LASER-02 is 2750 PSI. The change was made in Manual Laser-02 \u00a72 (rev B, 2025-05-22)."
+          },
+          "Q27": {
+            "substring_match": 1.0,
+            "citation_precision": 1.0,
+            "tool_coverage": 0.0,
+            "refusal_correct": null,
+            "n_tool_calls": 0,
+            "latency_s": 2.4534,
+            "refused": false,
+            "cited_doc_ids": [
+              "MANUAL-GRND-03"
+            ],
+            "answer": "The difference between the MANUAL-GRND-03 wheel-dressing interval and the current requirement is that the former recommends a shorter interval of 25 hours, while the latter specifies a longer interval of 40 hours."
+          },
+          "Q28": {
+            "substring_match": 1.0,
+            "citation_precision": 0.0,
+            "tool_coverage": 0.0,
+            "refusal_correct": null,
+            "n_tool_calls": 0,
+            "latency_s": 2.448,
+            "refused": false,
+            "cited_doc_ids": [
+              "MANUAL-CMM-04"
+            ],
+            "answer": "The QA work instruction for verifying safety-critical fastener torque uses the value of 22 N\u00b7m from Manual-ASM-01 \u00a74 (rev A, 2025-07-03)."
+          },
+          "Q29": {
+            "substring_match": 1.0,
+            "citation_precision": 1.0,
+            "tool_coverage": 0.0,
+            "refusal_correct": null,
+            "n_tool_calls": 0,
+            "latency_s": 2.9963,
+            "refused": false,
+            "cited_doc_ids": [
+              "QC-WI-007"
+            ],
+            "answer": "The torque required for the ASM-01 M8 safety-critical fasteners is 22 N\u00b7m. The inspection interval for this fastener is every shift, and the 5% audit is performed per shift. The manual confirms that the fasteners should be verified under QC-WI-007."
+          },
+          "Q30": {
+            "substring_match": 1.0,
+            "citation_precision": 1.0,
+            "tool_coverage": 0.0,
+            "refusal_correct": null,
+            "n_tool_calls": 0,
+            "latency_s": 3.3011,
+            "refused": false,
+            "cited_doc_ids": [
+              "MANUAL-ROB-03"
+            ],
+            "answer": "The asset manual that lists fault code E-512 is MANUAL-ROB-03 \u00a73 (rev A, 2025-02-20). This manual indicates that fault code E-512 corresponds to encoder communication loss - drive feedback timeout above 50 ms."
+          },
+          "Q31": {
+            "substring_match": null,
+            "citation_precision": 0.0,
+            "tool_coverage": 0.0,
+            "refusal_correct": 0.0,
+            "n_tool_calls": 0,
+            "latency_s": 3.235,
+            "refused": false,
+            "cited_doc_ids": [
+              "INC-2026-001"
+            ],
+            "answer": "The torque specification for the Cell 7 palletizer is 45 N\u00b7m. This information can be found in the Manual-ROB-03 section under Section 2, which states \"Confirm 72\u201380 PSI at the gripper regulator.\""
+          },
+          "Q32": {
+            "substring_match": null,
+            "citation_precision": 0.0,
+            "tool_coverage": 0.0,
+            "refusal_correct": 0.0,
+            "n_tool_calls": 0,
+            "latency_s": 2.3268,
+            "refused": false,
+            "cited_doc_ids": [
+              "QC-WI-007"
+            ],
+            "answer": "Insufficient evidence to determine the number of maintenance technicians working the night shift in Cell 4. The manual does not provide this information."
+          },
+          "Q33": {
+            "substring_match": null,
+            "citation_precision": 0.0,
+            "tool_coverage": 0.0,
+            "refusal_correct": 0.0,
+            "n_tool_calls": 0,
+            "latency_s": 1.6835,
+            "refused": false,
+            "cited_doc_ids": [
+              "MANUAL-CNC-07"
+            ],
+            "answer": "The CNC-07 spindle motor has a serial number of (MANUAL-CNC-07)."
+          },
+          "Q34": {
+            "substring_match": null,
+            "citation_precision": 0.0,
+            "tool_coverage": 0.0,
+            "refusal_correct": 0.0,
+            "n_tool_calls": 0,
+            "latency_s": 2.5691,
+            "refused": false,
+            "cited_doc_ids": [
+              "QC-WI-008"
+            ],
+            "answer": "The warranty period for the LASER-02 chiller is 30 parts. The citation for this information is (QC-WI-008, rev A, 2025-03-28)."
+          },
+          "Q35": {
+            "substring_match": null,
+            "citation_precision": 0.0,
+            "tool_coverage": 0.0,
+            "refusal_correct": 0.0,
+            "n_tool_calls": 0,
+            "latency_s": 1.6578,
+            "refused": false,
+            "cited_doc_ids": [
+              "INC-2026-008"
+            ],
+            "answer": "The firmware version of the CMM-04 controller is Rev A. The citation for this information is (MANUAL-CMM-04 \u00a72)."
+          }
+        }
+      }
+    },
+    "extractive": {
+      "backend": "extractive",
+      "device": "cpu",
+      "agentic": {
+        "overall": {
+          "answer_substring_match": 0.9333,
+          "citation_precision": 0.7952,
+          "expected_tool_coverage": 0.9857,
+          "mean_tool_calls": 3.2857,
+          "mean_latency_s": 0.0015,
+          "n_questions": 35
+        },
+        "by_category": {
+          "lookup": {
+            "answer_substring_match": 0.9,
+            "citation_precision": 0.75,
+            "expected_tool_coverage": 1.0,
+            "mean_tool_calls": 2.9,
+            "mean_latency_s": 0.0014,
+            "n_questions": 10
+          },
+          "multi_hop": {
+            "answer_substring_match": 0.8571,
+            "citation_precision": 0.7619,
+            "expected_tool_coverage": 1.0,
+            "mean_tool_calls": 3.2857,
+            "mean_latency_s": 0.0014,
+            "n_questions": 7
+          },
+          "numeric": {
+            "answer_substring_match": 1.0,
+            "citation_precision": 0.625,
+            "expected_tool_coverage": 1.0,
+            "mean_tool_calls": 4.0,
+            "mean_latency_s": 0.0016,
+            "n_questions": 8
+          },
+          "refusal": {
+            "answer_substring_match": null,
+            "citation_precision": 1.0,
+            "expected_tool_coverage": 1.0,
+            "mean_tool_calls": 2.8,
+            "mean_latency_s": 0.0016,
+            "n_questions": 5
+          },
+          "supersede": {
+            "answer_substring_match": 1.0,
+            "citation_precision": 1.0,
+            "expected_tool_coverage": 0.9,
+            "mean_tool_calls": 3.4,
+            "mean_latency_s": 0.0018,
+            "n_questions": 5
+          }
+        },
+        "correct_refusal_rate": 1.0,
+        "per_question": {
+          "Q01": {
+            "substring_match": 1.0,
+            "citation_precision": 1.0,
+            "tool_coverage": 1.0,
+            "refusal_correct": null,
+            "n_tool_calls": 2,
+            "latency_s": 0.0022,
+            "refused": false,
+            "cited_doc_ids": [
+              "MANUAL-CNC-07",
+              "MANUAL-DRLL-08",
+              "MANUAL-CNC-12",
+              "MANUAL-GRND-03"
+            ],
+            "answer": "| E-214 | Spindle over-temperature \u2014 front spindle bearing above 78 \u00b0C."
+          },
+          "Q02": {
+            "substring_match": 1.0,
+            "citation_precision": 1.0,
+            "tool_coverage": 1.0,
+            "refusal_correct": null,
+            "n_tool_calls": 4,
+            "latency_s": 0.0018,
+            "refused": false,
+            "cited_doc_ids": [
+              "MANUAL-CNC-07"
+            ],
+            "answer": "- **Coolant** \u2014 Check concentration 6\u20138 % with a refractometer and skim tramp oil."
+          },
+          "Q03": {
+            "substring_match": 1.0,
+            "citation_precision": 1.0,
+            "tool_coverage": 1.0,
+            "refusal_correct": null,
+            "n_tool_calls": 4,
+            "latency_s": 0.0018,
+            "refused": false,
+            "cited_doc_ids": [
+              "MANUAL-CNC-07"
+            ],
+            "answer": "- Lock out the 480 V main disconnect at MCC-4 before removing any way cover. - Wear safety glasses and cut-resistant gloves when handling HSK toolholders."
+          },
+          "Q04": {
+            "substring_match": 0.0,
+            "citation_precision": 0.0,
+            "tool_coverage": 1.0,
+            "refusal_correct": null,
+            "n_tool_calls": 1,
+            "latency_s": 0.0005,
+            "refused": false,
+            "cited_doc_ids": [
+              "INC-2026-003"
+            ],
+            "answer": "| Hole-position tolerance | 0.05 mm | 0.03 mm |"
+          },
+          "Q05": {
+            "substring_match": 1.0,
+            "citation_precision": 1.0,
+            "tool_coverage": 1.0,
+            "refusal_correct": null,
+            "n_tool_calls": 1,
+            "latency_s": 0.0005,
+            "refused": false,
+            "cited_doc_ids": [
+              "QC-WI-001"
+            ],
+            "answer": "**Title:** Incoming raw-material verification (aluminium 6082-T6)"
+          },
+          "Q06": {
+            "substring_match": 1.0,
+            "citation_precision": 1.0,
+            "tool_coverage": 1.0,
+            "refusal_correct": null,
+            "n_tool_calls": 4,
+            "latency_s": 0.0016,
+            "refused": false,
+            "cited_doc_ids": [
+              "MANUAL-PRS-02"
+            ],
+            "answer": "| E-318 | Hydraulic pressure loss \u2014 system pressure below 1800 PSI."
+          },
+          "Q07": {
+            "substring_match": 1.0,
+            "citation_precision": 1.0,
+            "tool_coverage": 1.0,
+            "refusal_correct": null,
+            "n_tool_calls": 4,
+            "latency_s": 0.0016,
+            "refused": false,
+            "cited_doc_ids": [
+              "SPEC-CNC-07"
+            ],
+            "answer": "| Max spindle speed | 15 000 RPM |"
+          },
+          "Q08": {
+            "substring_match": 1.0,
+            "citation_precision": 1.0,
+            "tool_coverage": 1.0,
+            "refusal_correct": null,
+            "n_tool_calls": 1,
+            "latency_s": 0.0005,
+            "refused": false,
+            "cited_doc_ids": [
+              "QC-WI-009"
+            ],
+            "answer": "- **PASS:** Concentration 6\u20138 % and pH 8.5\u20139.5."
+          },
+          "Q09": {
+            "substring_match": 1.0,
+            "citation_precision": 0.0,
+            "tool_coverage": 1.0,
+            "refusal_correct": null,
+            "n_tool_calls": 4,
+            "latency_s": 0.0017,
+            "refused": false,
+            "cited_doc_ids": [
+              "MANUAL-ROB-03"
+            ],
+            "answer": "**Asset:** ROB-03 \u2014 6-axis material-handling robot (NL-R20 (20 kg payload))"
+          },
+          "Q10": {
+            "substring_match": 1.0,
+            "citation_precision": 0.5,
+            "tool_coverage": 1.0,
+            "refusal_correct": null,
+            "n_tool_calls": 4,
+            "latency_s": 0.0013,
+            "refused": false,
+            "cited_doc_ids": [
+              "MANUAL-ASM-01",
+              "MANUAL-WELD-06"
+            ],
+            "answer": "| E-815 | Weld wire-feed fault \u2014 wire slip exceeds 5 % of commanded speed."
+          },
+          "Q11": {
+            "substring_match": 1.0,
+            "citation_precision": 0.5,
+            "tool_coverage": 1.0,
+            "refusal_correct": null,
+            "n_tool_calls": 4,
+            "latency_s": 0.0014,
+            "refused": false,
+            "cited_doc_ids": [
+              "MANUAL-CNC-12",
+              "SPEC-CNC-12"
+            ],
+            "answer": "| Turret clamp bolts | 38 | N\u00b7m |"
+          },
+          "Q12": {
+            "substring_match": 1.0,
+            "citation_precision": 0.5,
+            "tool_coverage": 1.0,
+            "refusal_correct": null,
+            "n_tool_calls": 4,
+            "latency_s": 0.0015,
+            "refused": false,
+            "cited_doc_ids": [
+              "MANUAL-CNC-07",
+              "SPEC-CNC-07"
+            ],
+            "answer": "| Drawbar force | 12 | kN |"
+          },
+          "Q13": {
+            "substring_match": 1.0,
+            "citation_precision": 1.0,
+            "tool_coverage": 1.0,
+            "refusal_correct": null,
+            "n_tool_calls": 4,
+            "latency_s": 0.0011,
+            "refused": false,
+            "cited_doc_ids": [
+              "MANUAL-PRS-02"
+            ],
+            "answer": "- **Accumulator** \u2014 Check pre-charge at 1 450 PSI, \u00b130 PSI."
+          },
+          "Q14": {
+            "substring_match": 1.0,
+            "citation_precision": 0.5,
+            "tool_coverage": 1.0,
+            "refusal_correct": null,
+            "n_tool_calls": 4,
+            "latency_s": 0.0012,
+            "refused": false,
+            "cited_doc_ids": [
+              "MANUAL-WELD-06",
+              "SPEC-WELD-06"
+            ],
+            "answer": "| Torch collar | 6 | N\u00b7m |"
+          },
+          "Q15": {
+            "substring_match": 1.0,
+            "citation_precision": 0.5,
+            "tool_coverage": 1.0,
+            "refusal_correct": null,
+            "n_tool_calls": 4,
+            "latency_s": 0.0012,
+            "refused": false,
+            "cited_doc_ids": [
+              "MANUAL-LASER-02",
+              "SPEC-LASER-02"
+            ],
+            "answer": "| Lens cassette screws | 3 | N\u00b7m |"
+          },
+          "Q16": {
+            "substring_match": 1.0,
+            "citation_precision": 1.0,
+            "tool_coverage": 1.0,
+            "refusal_correct": null,
+            "n_tool_calls": 4,
+            "latency_s": 0.0009,
+            "refused": false,
+            "cited_doc_ids": [
+              "MANUAL-DRLL-08"
+            ],
+            "answer": "| Collet nut | 55 | N\u00b7m | On the milling chuck."
+          },
+          "Q17": {
+            "substring_match": 1.0,
+            "citation_precision": 0.5,
+            "tool_coverage": 1.0,
+            "refusal_correct": null,
+            "n_tool_calls": 4,
+            "latency_s": 0.0014,
+            "refused": false,
+            "cited_doc_ids": [
+              "MANUAL-GRND-03",
+              "SPEC-GRND-03"
+            ],
+            "answer": "| Wheel arbor nut | 95 | N\u00b7m |"
+          },
+          "Q18": {
+            "substring_match": 1.0,
+            "citation_precision": 0.5,
+            "tool_coverage": 1.0,
+            "refusal_correct": null,
+            "n_tool_calls": 4,
+            "latency_s": 0.0039,
+            "refused": false,
+            "cited_doc_ids": [
+              "MANUAL-CNC-07",
+              "MANUAL-DRLL-08"
+            ],
+            "answer": "- **Air supply** \u2014 Confirm 90\u2013110 PSI at the FRL unit and drain the water trap."
+          },
+          "Q19": {
+            "substring_match": 1.0,
+            "citation_precision": 1.0,
+            "tool_coverage": 1.0,
+            "refusal_correct": null,
+            "n_tool_calls": 4,
+            "latency_s": 0.0038,
+            "refused": false,
+            "cited_doc_ids": [
+              "INC-2026-001"
+            ],
+            "answer": "| Spindle clamp bolts | 45 N\u00b7m | 52 N\u00b7m |"
+          },
+          "Q20": {
+            "substring_match": 1.0,
+            "citation_precision": 1.0,
+            "tool_coverage": 1.0,
+            "refusal_correct": null,
+            "n_tool_calls": 4,
+            "latency_s": 0.0014,
+            "refused": false,
+            "cited_doc_ids": [
+              "INC-2026-002"
+            ],
+            "answer": "| Hydraulic relief pressure | 2500 PSI | 2750 PSI |"
+          },
+          "Q21": {
+            "substring_match": 1.0,
+            "citation_precision": 1.0,
+            "tool_coverage": 0.5,
+            "refusal_correct": null,
+            "n_tool_calls": 1,
+            "latency_s": 0.0007,
+            "refused": false,
+            "cited_doc_ids": [
+              "INC-2026-003"
+            ],
+            "answer": "| Hole-position tolerance | 0.05 mm | 0.03 mm |"
+          },
+          "Q22": {
+            "substring_match": 1.0,
+            "citation_precision": 1.0,
+            "tool_coverage": 1.0,
+            "refusal_correct": null,
+            "n_tool_calls": 4,
+            "latency_s": 0.0014,
+            "refused": false,
+            "cited_doc_ids": [
+              "INC-2026-004"
+            ],
+            "answer": "| Wire-feed drive-roll tension | 8 N | 11 N |"
+          },
+          "Q23": {
+            "substring_match": 1.0,
+            "citation_precision": 1.0,
+            "tool_coverage": 1.0,
+            "refusal_correct": null,
+            "n_tool_calls": 4,
+            "latency_s": 0.0016,
+            "refused": false,
+            "cited_doc_ids": [
+              "INC-2026-008"
+            ],
+            "answer": "| Probe calibration interval | 90 days | 60 days |"
+          },
+          "Q24": {
+            "substring_match": 1.0,
+            "citation_precision": 0.3333333333333333,
+            "tool_coverage": 1.0,
+            "refusal_correct": null,
+            "n_tool_calls": 4,
+            "latency_s": 0.0023,
+            "refused": false,
+            "cited_doc_ids": [
+              "MANUAL-CNC-07",
+              "MANUAL-DRLL-08",
+              "MANUAL-CNC-12"
+            ],
+            "answer": "| E-214 | Spindle over-temperature \u2014 front spindle bearing above 78 \u00b0C."
+          },
+          "Q25": {
+            "substring_match": 1.0,
+            "citation_precision": 1.0,
+            "tool_coverage": 1.0,
+            "refusal_correct": null,
+            "n_tool_calls": 4,
+            "latency_s": 0.0013,
+            "refused": false,
+            "cited_doc_ids": [
+              "INC-2026-006"
+            ],
+            "answer": "| Belt tension | 45 N | 58 N |"
+          },
+          "Q26": {
+            "substring_match": 1.0,
+            "citation_precision": 1.0,
+            "tool_coverage": 1.0,
+            "refusal_correct": null,
+            "n_tool_calls": 4,
+            "latency_s": 0.0016,
+            "refused": false,
+            "cited_doc_ids": [
+              "INC-2026-005"
+            ],
+            "answer": "| Assist-gas (N2) pressure | 180 PSI | 210 PSI |"
+          },
+          "Q27": {
+            "substring_match": 1.0,
+            "citation_precision": 1.0,
+            "tool_coverage": 1.0,
+            "refusal_correct": null,
+            "n_tool_calls": 4,
+            "latency_s": 0.0015,
+            "refused": false,
+            "cited_doc_ids": [
+              "INC-2026-007"
+            ],
+            "answer": "| Wheel-dressing interval | 40 h | 25 h |"
+          },
+          "Q28": {
+            "substring_match": 0.0,
+            "citation_precision": 0.0,
+            "tool_coverage": 1.0,
+            "refusal_correct": null,
+            "n_tool_calls": 1,
+            "latency_s": 0.001,
+            "refused": false,
+            "cited_doc_ids": [
+              "MANUAL-CMM-04"
+            ],
+            "answer": "| Stylus tip | 0.5 | N\u00b7m | Use the supplied torque driver."
+          },
+          "Q29": {
+            "substring_match": 1.0,
+            "citation_precision": 1.0,
+            "tool_coverage": 1.0,
+            "refusal_correct": null,
+            "n_tool_calls": 4,
+            "latency_s": 0.0011,
+            "refused": false,
+            "cited_doc_ids": [
+              "MANUAL-ASM-01"
+            ],
+            "answer": "| M8 safety-critical fasteners | 22 | N\u00b7m | Angle-controlled;"
+          },
+          "Q30": {
+            "substring_match": 1.0,
+            "citation_precision": 1.0,
+            "tool_coverage": 1.0,
+            "refusal_correct": null,
+            "n_tool_calls": 2,
+            "latency_s": 0.0012,
+            "refused": false,
+            "cited_doc_ids": [
+              "MANUAL-CMM-04",
+              "MANUAL-WELD-06",
+              "MANUAL-ROB-03",
+              "MANUAL-CNC-12"
+            ],
+            "answer": "| E-512 | Encoder communication loss \u2014 drive feedback timeout above 50 ms."
+          },
+          "Q31": {
+            "substring_match": null,
+            "citation_precision": 1.0,
+            "tool_coverage": 1.0,
+            "refusal_correct": 1.0,
+            "n_tool_calls": 1,
+            "latency_s": 0.0006,
+            "refused": true,
+            "cited_doc_ids": [],
+            "answer": "INSUFFICIENT_EVIDENCE"
+          },
+          "Q32": {
+            "substring_match": null,
+            "citation_precision": 1.0,
+            "tool_coverage": 1.0,
+            "refusal_correct": 1.0,
+            "n_tool_calls": 1,
+            "latency_s": 0.0007,
+            "refused": true,
+            "cited_doc_ids": [],
+            "answer": "INSUFFICIENT_EVIDENCE"
+          },
+          "Q33": {
+            "substring_match": null,
+            "citation_precision": 1.0,
+            "tool_coverage": 1.0,
+            "refusal_correct": 1.0,
+            "n_tool_calls": 4,
+            "latency_s": 0.0038,
+            "refused": true,
+            "cited_doc_ids": [],
+            "answer": "INSUFFICIENT_EVIDENCE"
+          },
+          "Q34": {
+            "substring_match": null,
+            "citation_precision": 1.0,
+            "tool_coverage": 1.0,
+            "refusal_correct": 1.0,
+            "n_tool_calls": 4,
+            "latency_s": 0.0015,
+            "refused": true,
+            "cited_doc_ids": [],
+            "answer": "INSUFFICIENT_EVIDENCE"
+          },
+          "Q35": {
+            "substring_match": null,
+            "citation_precision": 1.0,
+            "tool_coverage": 1.0,
+            "refusal_correct": 1.0,
+            "n_tool_calls": 4,
+            "latency_s": 0.0014,
+            "refused": true,
+            "cited_doc_ids": [],
+            "answer": "INSUFFICIENT_EVIDENCE"
+          }
+        }
+      },
+      "naive": {
+        "overall": {
+          "answer_substring_match": 0.8667,
+          "citation_precision": 0.6095,
+          "expected_tool_coverage": 0.0,
+          "mean_tool_calls": 0.0,
+          "mean_latency_s": 0.0006,
+          "n_questions": 35
+        },
+        "by_category": {
+          "lookup": {
+            "answer_substring_match": 0.8,
+            "citation_precision": 0.65,
+            "expected_tool_coverage": 0.0,
+            "mean_tool_calls": 0.0,
+            "mean_latency_s": 0.0005,
+            "n_questions": 10
+          },
+          "multi_hop": {
+            "answer_substring_match": 0.8571,
+            "citation_precision": 0.7619,
+            "expected_tool_coverage": 0.0,
+            "mean_tool_calls": 0.0,
+            "mean_latency_s": 0.0007,
+            "n_questions": 7
+          },
+          "numeric": {
+            "answer_substring_match": 0.875,
+            "citation_precision": 0.4375,
+            "expected_tool_coverage": 0.0,
+            "mean_tool_calls": 0.0,
+            "mean_latency_s": 0.0006,
+            "n_questions": 8
+          },
+          "refusal": {
+            "answer_substring_match": null,
+            "citation_precision": 0.2,
+            "expected_tool_coverage": 0.0,
+            "mean_tool_calls": 0.0,
+            "mean_latency_s": 0.0007,
+            "n_questions": 5
+          },
+          "supersede": {
+            "answer_substring_match": 1.0,
+            "citation_precision": 1.0,
+            "expected_tool_coverage": 0.0,
+            "mean_tool_calls": 0.0,
+            "mean_latency_s": 0.0006,
+            "n_questions": 5
+          }
+        },
+        "correct_refusal_rate": 0.2,
+        "per_question": {
+          "Q01": {
+            "substring_match": 0.0,
+            "citation_precision": 0.0,
+            "tool_coverage": 0.0,
+            "refusal_correct": null,
+            "n_tool_calls": 0,
+            "latency_s": 0.0006,
+            "refused": false,
+            "cited_doc_ids": [
+              "MANUAL-LASER-02"
+            ],
+            "answer": "| E-921 | Chiller refrigerant low \u2014 chiller return temperature above setpoint + 4 \u00b0C."
+          },
+          "Q02": {
+            "substring_match": 1.0,
+            "citation_precision": 1.0,
+            "tool_coverage": 0.0,
+            "refusal_correct": null,
+            "n_tool_calls": 0,
+            "latency_s": 0.0005,
+            "refused": false,
+            "cited_doc_ids": [
+              "MANUAL-CNC-07"
+            ],
+            "answer": "- **Coolant** \u2014 Check concentration 6\u20138 % with a refractometer and skim tramp oil."
+          },
+          "Q03": {
+            "substring_match": 1.0,
+            "citation_precision": 1.0,
+            "tool_coverage": 0.0,
+            "refusal_correct": null,
+            "n_tool_calls": 0,
+            "latency_s": 0.0006,
+            "refused": false,
+            "cited_doc_ids": [
+              "MANUAL-CNC-07"
+            ],
+            "answer": "- Lock out the 480 V main disconnect at MCC-4 before removing any way cover. - Wear safety glasses and cut-resistant gloves when handling HSK toolholders."
+          },
+          "Q04": {
+            "substring_match": 0.0,
+            "citation_precision": 0.0,
+            "tool_coverage": 0.0,
+            "refusal_correct": null,
+            "n_tool_calls": 0,
+            "latency_s": 0.0004,
+            "refused": false,
+            "cited_doc_ids": [
+              "INC-2026-003"
+            ],
+            "answer": "| Hole-position tolerance | 0.05 mm | 0.03 mm |"
+          },
+          "Q05": {
+            "substring_match": 1.0,
+            "citation_precision": 1.0,
+            "tool_coverage": 0.0,
+            "refusal_correct": null,
+            "n_tool_calls": 0,
+            "latency_s": 0.0004,
+            "refused": false,
+            "cited_doc_ids": [
+              "QC-WI-001"
+            ],
+            "answer": "**Title:** Incoming raw-material verification (aluminium 6082-T6)"
+          },
+          "Q06": {
+            "substring_match": 1.0,
+            "citation_precision": 1.0,
+            "tool_coverage": 0.0,
+            "refusal_correct": null,
+            "n_tool_calls": 0,
+            "latency_s": 0.0005,
+            "refused": false,
+            "cited_doc_ids": [
+              "MANUAL-PRS-02"
+            ],
+            "answer": "| E-318 | Hydraulic pressure loss \u2014 system pressure below 1800 PSI."
+          },
+          "Q07": {
+            "substring_match": 1.0,
+            "citation_precision": 1.0,
+            "tool_coverage": 0.0,
+            "refusal_correct": null,
+            "n_tool_calls": 0,
+            "latency_s": 0.0005,
+            "refused": false,
+            "cited_doc_ids": [
+              "SPEC-CNC-07"
+            ],
+            "answer": "| Max spindle speed | 15 000 RPM |"
+          },
+          "Q08": {
+            "substring_match": 1.0,
+            "citation_precision": 1.0,
+            "tool_coverage": 0.0,
+            "refusal_correct": null,
+            "n_tool_calls": 0,
+            "latency_s": 0.0004,
+            "refused": false,
+            "cited_doc_ids": [
+              "QC-WI-009"
+            ],
+            "answer": "- **PASS:** Concentration 6\u20138 % and pH 8.5\u20139.5."
+          },
+          "Q09": {
+            "substring_match": 1.0,
+            "citation_precision": 0.0,
+            "tool_coverage": 0.0,
+            "refusal_correct": null,
+            "n_tool_calls": 0,
+            "latency_s": 0.0004,
+            "refused": false,
+            "cited_doc_ids": [
+              "MANUAL-ROB-03"
+            ],
+            "answer": "**Asset:** ROB-03 \u2014 6-axis material-handling robot (NL-R20 (20 kg payload))"
+          },
+          "Q10": {
+            "substring_match": 1.0,
+            "citation_precision": 0.5,
+            "tool_coverage": 0.0,
+            "refusal_correct": null,
+            "n_tool_calls": 0,
+            "latency_s": 0.0005,
+            "refused": false,
+            "cited_doc_ids": [
+              "MANUAL-ASM-01",
+              "MANUAL-WELD-06"
+            ],
+            "answer": "| E-815 | Weld wire-feed fault \u2014 wire slip exceeds 5 % of commanded speed."
+          },
+          "Q11": {
+            "substring_match": 1.0,
+            "citation_precision": 0.5,
+            "tool_coverage": 0.0,
+            "refusal_correct": null,
+            "n_tool_calls": 0,
+            "latency_s": 0.0005,
+            "refused": false,
+            "cited_doc_ids": [
+              "MANUAL-CNC-12",
+              "SPEC-CNC-12"
+            ],
+            "answer": "| Turret clamp bolts | 38 | N\u00b7m |"
+          },
+          "Q12": {
+            "substring_match": 1.0,
+            "citation_precision": 0.0,
+            "tool_coverage": 0.0,
+            "refusal_correct": null,
+            "n_tool_calls": 0,
+            "latency_s": 0.0004,
+            "refused": false,
+            "cited_doc_ids": [
+              "SPEC-CNC-07"
+            ],
+            "answer": "| Drawbar force | 12 | kN |"
+          },
+          "Q13": {
+            "substring_match": 1.0,
+            "citation_precision": 1.0,
+            "tool_coverage": 0.0,
+            "refusal_correct": null,
+            "n_tool_calls": 0,
+            "latency_s": 0.0005,
+            "refused": false,
+            "cited_doc_ids": [
+              "MANUAL-PRS-02"
+            ],
+            "answer": "- **Accumulator** \u2014 Check pre-charge at 1 450 PSI, \u00b130 PSI."
+          },
+          "Q14": {
+            "substring_match": 1.0,
+            "citation_precision": 0.0,
+            "tool_coverage": 0.0,
+            "refusal_correct": null,
+            "n_tool_calls": 0,
+            "latency_s": 0.0004,
+            "refused": false,
+            "cited_doc_ids": [
+              "SPEC-WELD-06"
+            ],
+            "answer": "| Torch collar | 6 | N\u00b7m |"
+          },
+          "Q15": {
+            "substring_match": 1.0,
+            "citation_precision": 0.5,
+            "tool_coverage": 0.0,
+            "refusal_correct": null,
+            "n_tool_calls": 0,
+            "latency_s": 0.0004,
+            "refused": false,
+            "cited_doc_ids": [
+              "MANUAL-LASER-02",
+              "SPEC-LASER-02"
+            ],
+            "answer": "| Lens cassette screws | 3 | N\u00b7m |"
+          },
+          "Q16": {
+            "substring_match": 1.0,
+            "citation_precision": 1.0,
+            "tool_coverage": 0.0,
+            "refusal_correct": null,
+            "n_tool_calls": 0,
+            "latency_s": 0.0005,
+            "refused": false,
+            "cited_doc_ids": [
+              "MANUAL-DRLL-08"
+            ],
+            "answer": "| Collet nut | 55 | N\u00b7m | On the milling chuck."
+          },
+          "Q17": {
+            "substring_match": 1.0,
+            "citation_precision": 0.5,
+            "tool_coverage": 0.0,
+            "refusal_correct": null,
+            "n_tool_calls": 0,
+            "latency_s": 0.0005,
+            "refused": false,
+            "cited_doc_ids": [
+              "MANUAL-GRND-03",
+              "SPEC-GRND-03"
+            ],
+            "answer": "| Wheel arbor nut | 95 | N\u00b7m |"
+          },
+          "Q18": {
+            "substring_match": 0.0,
+            "citation_precision": 0.0,
+            "tool_coverage": 0.0,
+            "refusal_correct": null,
+            "n_tool_calls": 0,
+            "latency_s": 0.0014,
+            "refused": false,
+            "cited_doc_ids": [
+              "MANUAL-PRS-02",
+              "MANUAL-WASH-01"
+            ],
+            "answer": "| E-101 | Coolant low-pressure trip \u2014 supply pressure below 20 PSI for more than 3 s. | E-318 | Hydraulic pressure loss \u2014 system pressure below 1800 PSI."
+          },
+          "Q19": {
+            "substring_match": 1.0,
+            "citation_precision": 1.0,
+            "tool_coverage": 0.0,
+            "refusal_correct": null,
+            "n_tool_calls": 0,
+            "latency_s": 0.0009,
+            "refused": false,
+            "cited_doc_ids": [
+              "INC-2026-001"
+            ],
+            "answer": "| Spindle clamp bolts | 45 N\u00b7m | 52 N\u00b7m |"
+          },
+          "Q20": {
+            "substring_match": 1.0,
+            "citation_precision": 1.0,
+            "tool_coverage": 0.0,
+            "refusal_correct": null,
+            "n_tool_calls": 0,
+            "latency_s": 0.0007,
+            "refused": false,
+            "cited_doc_ids": [
+              "INC-2026-002"
+            ],
+            "answer": "| Hydraulic relief pressure | 2500 PSI | 2750 PSI |"
+          },
+          "Q21": {
+            "substring_match": 1.0,
+            "citation_precision": 1.0,
+            "tool_coverage": 0.0,
+            "refusal_correct": null,
+            "n_tool_calls": 0,
+            "latency_s": 0.0005,
+            "refused": false,
+            "cited_doc_ids": [
+              "INC-2026-003"
+            ],
+            "answer": "| Hole-position tolerance | 0.05 mm | 0.03 mm |"
+          },
+          "Q22": {
+            "substring_match": 1.0,
+            "citation_precision": 1.0,
+            "tool_coverage": 0.0,
+            "refusal_correct": null,
+            "n_tool_calls": 0,
+            "latency_s": 0.0006,
+            "refused": false,
+            "cited_doc_ids": [
+              "INC-2026-004"
+            ],
+            "answer": "| Wire-feed drive-roll tension | 8 N | 11 N |"
+          },
+          "Q23": {
+            "substring_match": 1.0,
+            "citation_precision": 1.0,
+            "tool_coverage": 0.0,
+            "refusal_correct": null,
+            "n_tool_calls": 0,
+            "latency_s": 0.0005,
+            "refused": false,
+            "cited_doc_ids": [
+              "INC-2026-008"
+            ],
+            "answer": "| Probe calibration interval | 90 days | 60 days |"
+          },
+          "Q24": {
+            "substring_match": 1.0,
+            "citation_precision": 0.3333333333333333,
+            "tool_coverage": 0.0,
+            "refusal_correct": null,
+            "n_tool_calls": 0,
+            "latency_s": 0.0011,
+            "refused": false,
+            "cited_doc_ids": [
+              "MANUAL-CNC-07",
+              "MANUAL-DRLL-08",
+              "MANUAL-CNC-12"
+            ],
+            "answer": "| E-214 | Spindle over-temperature \u2014 front spindle bearing above 78 \u00b0C."
+          },
+          "Q25": {
+            "substring_match": 1.0,
+            "citation_precision": 1.0,
+            "tool_coverage": 0.0,
+            "refusal_correct": null,
+            "n_tool_calls": 0,
+            "latency_s": 0.0007,
+            "refused": false,
+            "cited_doc_ids": [
+              "INC-2026-006"
+            ],
+            "answer": "| Belt tension | 45 N | 58 N |"
+          },
+          "Q26": {
+            "substring_match": 1.0,
+            "citation_precision": 1.0,
+            "tool_coverage": 0.0,
+            "refusal_correct": null,
+            "n_tool_calls": 0,
+            "latency_s": 0.0008,
+            "refused": false,
+            "cited_doc_ids": [
+              "INC-2026-005"
+            ],
+            "answer": "| Assist-gas (N2) pressure | 180 PSI | 210 PSI |"
+          },
+          "Q27": {
+            "substring_match": 1.0,
+            "citation_precision": 1.0,
+            "tool_coverage": 0.0,
+            "refusal_correct": null,
+            "n_tool_calls": 0,
+            "latency_s": 0.0006,
+            "refused": false,
+            "cited_doc_ids": [
+              "INC-2026-007"
+            ],
+            "answer": "| Wheel-dressing interval | 40 h | 25 h |"
+          },
+          "Q28": {
+            "substring_match": 0.0,
+            "citation_precision": 0.0,
+            "tool_coverage": 0.0,
+            "refusal_correct": null,
+            "n_tool_calls": 0,
+            "latency_s": 0.0006,
+            "refused": false,
+            "cited_doc_ids": [
+              "MANUAL-CMM-04"
+            ],
+            "answer": "| Stylus tip | 0.5 | N\u00b7m | Use the supplied torque driver."
+          },
+          "Q29": {
+            "substring_match": 1.0,
+            "citation_precision": 1.0,
+            "tool_coverage": 0.0,
+            "refusal_correct": null,
+            "n_tool_calls": 0,
+            "latency_s": 0.0006,
+            "refused": false,
+            "cited_doc_ids": [
+              "MANUAL-ASM-01"
+            ],
+            "answer": "| M8 safety-critical fasteners | 22 | N\u00b7m | Angle-controlled;"
+          },
+          "Q30": {
+            "substring_match": 1.0,
+            "citation_precision": 1.0,
+            "tool_coverage": 0.0,
+            "refusal_correct": null,
+            "n_tool_calls": 0,
+            "latency_s": 0.0008,
+            "refused": false,
+            "cited_doc_ids": [
+              "MANUAL-CMM-04",
+              "MANUAL-WELD-06",
+              "MANUAL-ROB-03"
+            ],
+            "answer": "| E-512 | Encoder communication loss \u2014 drive feedback timeout above 50 ms."
+          },
+          "Q31": {
+            "substring_match": null,
+            "citation_precision": 0.0,
+            "tool_coverage": 0.0,
+            "refusal_correct": 0.0,
+            "n_tool_calls": 0,
+            "latency_s": 0.0007,
+            "refused": false,
+            "cited_doc_ids": [
+              "MANUAL-CMM-04"
+            ],
+            "answer": "| Stylus tip | 0.5 | N\u00b7m | Use the supplied torque driver."
+          },
+          "Q32": {
+            "substring_match": null,
+            "citation_precision": 0.0,
+            "tool_coverage": 0.0,
+            "refusal_correct": 0.0,
+            "n_tool_calls": 0,
+            "latency_s": 0.0005,
+            "refused": false,
+            "cited_doc_ids": [
+              "MANUAL-ASM-01"
+            ],
+            "answer": "Main disconnect: **240 V** at MCC-4."
+          },
+          "Q33": {
+            "substring_match": null,
+            "citation_precision": 0.0,
+            "tool_coverage": 0.0,
+            "refusal_correct": 0.0,
+            "n_tool_calls": 0,
+            "latency_s": 0.001,
+            "refused": false,
+            "cited_doc_ids": [
+              "INC-2026-001"
+            ],
+            "answer": "Effective immediately the spindle clamp bolts must be torqued to 52 N\u00b7m."
+          },
+          "Q34": {
+            "substring_match": null,
+            "citation_precision": 0.0,
+            "tool_coverage": 0.0,
+            "refusal_correct": 0.0,
+            "n_tool_calls": 0,
+            "latency_s": 0.0008,
+            "refused": false,
+            "cited_doc_ids": [
+              "MANUAL-LASER-02"
+            ],
+            "answer": "| E-921 | Chiller refrigerant low \u2014 chiller return temperature above setpoint + 4 \u00b0C."
+          },
+          "Q35": {
+            "substring_match": null,
+            "citation_precision": 1.0,
+            "tool_coverage": 0.0,
+            "refusal_correct": 1.0,
+            "n_tool_calls": 0,
+            "latency_s": 0.0005,
+            "refused": true,
+            "cited_doc_ids": [],
+            "answer": "INSUFFICIENT_EVIDENCE"
+          }
+        }
+      }
+    }
+  }
+}
